@@ -1,0 +1,4 @@
+(executable
+ (name main)
+ (libraries core omd csv re tyxml)
+ (preprocess (pps tyxml-ppx)))

@@ -1,0 +1,1 @@
+let dist_dir = Sys.argv.(1)
