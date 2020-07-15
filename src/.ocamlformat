@@ -1,2 +1,4 @@
 version=0.14.2
-profile=ocamlformat
+break-infix=fit-or-vertical
+parse-docstrings=true
+indicate-multiline-delimiters=no

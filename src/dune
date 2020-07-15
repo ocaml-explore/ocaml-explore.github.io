@@ -1,4 +1,8 @@
 (executable
- (name main)
- (libraries core omd csv re tyxml)
- (preprocess (pps tyxml-ppx)))
+ (name onotion)
+ (public_name onotion)
+ (flags :standard -g)
+ (libraries core cohttp-lwt-unix omd csv re tyxml yojson decompress.gz
+   bigstringaf)
+ (preprocess
+  (pps ppx_jane tyxml-ppx lwt_ppx)))

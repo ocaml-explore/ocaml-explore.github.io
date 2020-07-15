@@ -1,0 +1,32 @@
+opam-version: "2.0"
+version:      "~dev"
+synopsis:     "A CLI tool for exporting and building Notion Workspaces"
+maintainer:   "patricoferris <pf341@patricoferris.com>"
+authors:      "patricoferris <pf341@patricoferris.com>"
+license:      "ISC"
+homepage:     "https://github.com/patricoferris/onotion"
+bug-reports:  "https://github.com/patricoferris/onotion/issues"
+
+depends: [
+  "ocaml"   {>= "4.07.0"}
+  "dune"    {>= "2.6.0"}
+  "core"
+  "cohttp-lwt-unix"
+  "omd" 
+  "csv" 
+  "re" 
+  "tyxml" 
+  "yojson"
+  "decompress.gz"
+  "bigstringaf"
+]
+
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
+
+description: """
+Export your notion workspace from the command-line and 
+build it statically as a website. 
+"""
