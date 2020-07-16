@@ -107,7 +107,7 @@ let enqueue_task () =
 
 let get_zip output uri =
   C.get (Uri.of_string uri) >>= fun (_res, body) ->
-  Lwt_unix.(openfile (output ^ ".zip") [ O_CREAT; O_RDWR ] 777) >>= fun fd ->
+  Lwt_unix.(openfile (output ^ ".zip") [ O_CREAT; O_RDWR ] 0o777) >>= fun fd ->
   Cohttp_lwt.Body.to_string body >>= fun body ->
   let byte_body = Bytes.of_string body in
   Lwt_unix.write fd (Bytes.of_string body) 0 (Bytes.length byte_body)
