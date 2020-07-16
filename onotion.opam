@@ -24,6 +24,10 @@ depends: [
   "bigstringaf"
 ]
 
+pin-depends: [
+  "omd.dev" "git+https://github.com/ocaml/omd"
+]
+
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
