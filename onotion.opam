@@ -12,6 +12,8 @@ depends: [
   "dune"    {>= "2.6.0"}
   "core"
   "cohttp-lwt-unix"
+  "tls"
+  "conduit"
   "omd" 
   "csv" 
   "re" 
