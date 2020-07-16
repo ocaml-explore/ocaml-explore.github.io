@@ -15,7 +15,7 @@ jobs:
     - name: External Dependencies
       run: opam depext -yt onotion
     - name: Dependencies
-      run: opam install -t . --deps-only
+      run: opam install .
     - name: Export Notion 
       run: onotion export
       env:
