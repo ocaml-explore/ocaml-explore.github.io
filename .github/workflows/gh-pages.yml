@@ -29,7 +29,9 @@ jobs:
       with:
         args: unzip ./notion.zip -d ./notion
     - name: Build site 🔨
-      run: opam exec -- sudo onotion build
+      run: |
+        chmod -R 777 ./notion
+        opam exec -- onotion build
     - name: Deploy to GH Pages 🚀
       uses: JamesIves/github-pages-deploy-action@3.5.7
       with:
