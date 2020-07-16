@@ -1,7 +1,7 @@
 open Tyxml
 open Core
 
-let wrapper top_dir title body =
+let wrapper css_path title body =
   [%html
     {|
   <html>
@@ -10,7 +10,7 @@ let wrapper top_dir title body =
       {|</title>
       <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
       <link rel=stylesheet href=|}
-      ("/" ^ top_dir ^ "/" ^ "main.css")
+      css_path
       {| />
       <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>

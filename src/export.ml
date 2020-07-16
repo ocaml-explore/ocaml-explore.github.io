@@ -48,7 +48,6 @@ let get_task ~body () =
         C.post ~headers ~body (Uri.of_string Conf.get_tasks)
         >>= fun (_res, body) ->
         Cohttp_lwt.Body.to_string body >|= decompress >>= fun b ->
-        print_endline b;
         Lwt.return (Basic.from_string b)
       in
       let%lwt state, status =
@@ -90,7 +89,6 @@ let enqueue_task () =
   C.post ~headers ~body (Uri.of_string Conf.enqueue_task)
   >>= fun (_res, body) ->
   Cohttp_lwt.Body.to_string body >|= decompress >>= fun body ->
-  print_endline body;
   Lwt.return (Basic.from_string body) >>= function
   | `Assoc assoc -> (
       match

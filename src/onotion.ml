@@ -17,15 +17,10 @@ let build dist_dir =
   let all = all_files dist_dir in
   let pages = List.filter (fun f -> Filename.extension (fst f) = ".md") all in
   let csvs = List.filter (fun f -> Filename.extension (fst f) = ".csv") all in
-  List.iter
-    (fun (a, b) ->
-      print_endline ("ABS: " ^ a);
-      print_endline b)
-    csvs;
   let change_ext str =
     try Filename.chop_extension str ^ ".html"
     with Invalid_argument _ ->
-      print_endline str;
+      print_endline ("Not changing url for: " ^ str);
       str
   in
   let _mds =

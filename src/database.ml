@@ -54,7 +54,9 @@ let get_url _db name files =
 let to_html top_dir db files =
   let gen_page (page : Page.t) =
     let url =
-      "/" ^ Filename.chop_extension (fst (get_url db page.name files)) ^ ".html"
+      Filename.chop_extension
+        (Paths.rel_diff db.path (fst (get_url db page.name files)))
+      ^ ".html"
     in
     [%html {|<li><a href="|} url {|">|} [ Html.txt page.name ] {|</a></li>|}]
   in
@@ -73,4 +75,5 @@ let to_html top_dir db files =
     </div>
   |}]
   in
-  Html_gen.(emit_page db.path (wrapper top_dir db.name body))
+  let rel_css = Paths.rel_diff db.path (top_dir ^ "/main.css") in
+  Html_gen.(emit_page db.path (wrapper rel_css db.name body))
