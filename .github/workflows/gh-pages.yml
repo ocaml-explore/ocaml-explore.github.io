@@ -21,7 +21,7 @@ jobs:
     - name: Install
       run: opam exec -- dune install 
     - name: Export Notion 
-      run: onotion export
+      run: opam exec -- onotion export
       env:
         notion_cookies: ${{ secrets.NOTION_COOKIES }}
         active_user: ${{ secrets.ACTIVE_USER }}
@@ -29,7 +29,7 @@ jobs:
       with:
         args: unzip ./notion.zip -d ./notion
     - name: Build site 🔨
-      run: onotion build
+      run: opam exec -- onotion build
     - name: Deploy to GH Pages 🚀
       uses: JamesIves/github-pages-deploy-action@3.5.7
       with:
