@@ -26,7 +26,7 @@
                                            
     <h1>Explore OCaml</h1>
 <p>One of the biggest problems programming languages face in a real world setting is that getting started with them isn't necessarily easy. OCaml is no exception. There tend to be lots of great resources explaining interesting aspects of the language like GADTs or the module system - but not as many centred around productivity workflows i.e. getting things done in OCaml.</p>
-<p>Often these workflows are obvious... once you know them. Explore OCaml hopes to be a centralised source for workflows in OCaml categorised by user, tools and libraries with rich linking to external sources of information.</p>
+<p>Often these workflows are obvious... once you know them. Explore OCaml is a centralised source for workflows in OCaml categorised by user, tools and libraries with rich linking to external sources of information.</p>
 <hr />
 <p>Here are some of the common problems users face:</p>
 <ol>
@@ -48,7 +48,9 @@
 <p>*<em>workflow: this involves testing, publishing, formatting, building etc. all of the common tooling that needs to be in place to allow most programming languages to solve real world problems.</em></p>
 <h1>Opam</h1>
 <hr />
-<p>Opam is the the OCaml package manager. A sharp distinction is made between opam files and the opam client. The former is necessary <em>for any project</em> if you want to unlock the power of the OCaml Platform. Even if you are not publishing your project to the opam repository for others to use. The latter is an optional, but highly recommended client for managing dependencies, package installation etc.</p>
+<p><a href="https://opam.ocaml.org/">Opam</a> is the the OCaml package manager.  In order to join the OCaml open source community, all you need to do is to add an <code>opam</code> file to your project.  This <code>opam</code> file describes the build instructions for your project, as well as any dependencies it might need. An <code>opam</code> file is useful for a project of any size — from toy learning exercises to big theorem provers — since it allows someone else to easily rebuild and replicate your work, and even extend it if they choose to.</p>
+<p>Once you are comfortable with your code and want to share it more publically, an opam file can be published to the central OCaml <a href="https://github.com/ocaml/opam-repository/">opam repository</a>.  This is a collection of tens of thousands of packages that have been contributed freely by the community since 2013.  The opam-repository does not contain the full source code to your project; instead, it tracks pointers to different versions of your code, and also the various compatibility constraints to automatically figure out which versions work with each other.  The usual mechanism to track your releases is to use a version control system such as git.</p>
+<p>How do you actually manipulate opam files?  There are several tools that can parse these files and repositories and install the software you want.  The primary reference implementation that runs on macOS and Linux is also the <a href="https://www.notion.so/opam-client-af5eb8b02bdf4c17931004d79002243e">opam client</a> , and is the first thing you will want to configure on your system to get started.  Read on below for more details about opam files and the client.  If you'd like to just get on with a particular task, skip to the next section to find out which archetype you best fit into.</p>
 <p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/opam%20files%20e6fb594018134e3d991e4fccf83abd41.html">opam files</a></p>
 <p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/opam%20client%20af5eb8b02bdf4c17931004d79002243e.html">opam client</a></p>
 <h1>Workflows</h1>
