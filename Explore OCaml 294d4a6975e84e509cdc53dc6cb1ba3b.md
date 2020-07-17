@@ -4,6 +4,8 @@ One of the biggest problems programming languages face in a real world setting i
 
 Often these workflows are obvious... once you know them. Explore OCaml is a centralised source for workflows in OCaml categorised by user, tools and libraries with rich linking to external sources of information.
 
+/cont
+
 ---
 
 Here are some of the common problems users face: 
@@ -16,15 +18,17 @@ Here are some of the common problems users face:
 6. There is a cool tool written in OCaml - how do I install and use it? 
 7. I'm running on OS `ABC` but want to compile for `XYZ` - can I do that in OCaml?
 
-**workflow: this involves testing, publishing, formatting, building etc. all of the common tooling that needs to be in place to allow most programming languages to solve real world problems.* 
+**workflow: this involves testing, publishing, formatting, building etc. all of the common tooling that needs to be in place to allow most programming languages to solve real world problems.*
+
+This site aims to answer these questions for you, as well as let you discover more advanced workflows as your use of OCaml grows. First, we'll introduce the only essential tool you need — opam.
 
 # Opam
 
 ---
 
-[Opam](https://opam.ocaml.org/) is the the OCaml package manager.  In order to join the OCaml open source community, all you need to do is to add an `opam` file to your project.  This `opam` file describes the build instructions for your project, as well as any dependencies it might need. An `opam` file is useful for a project of any size — from toy learning exercises to big theorem provers — since it allows someone else to easily rebuild and replicate your work, and even extend it if they choose to.
+[Opam](https://opam.ocaml.org/) is the the OCaml package manager.  In order to join the OCaml open source community, all you need to do is to add an [opam file](https://www.notion.so/opam-files-e6fb594018134e3d991e4fccf83abd41) to your project.  This `opam` file describes the build instructions for your project, as well as any dependencies it might need. An `opam` file is useful for a project of any size — from toy learning exercises to big theorem provers — since it allows someone else to easily rebuild and replicate your work, and even extend it if they choose to.
 
-Once you are comfortable with your code and want to share it more publically, an opam file can be published to the central OCaml [opam repository](https://github.com/ocaml/opam-repository/).  This is a collection of tens of thousands of packages that have been contributed freely by the community since 2013.  The opam-repository does not contain the full source code to your project; instead, it tracks pointers to different versions of your code, and also the various compatibility constraints to automatically figure out which versions work with each other.  The usual mechanism to track your releases is to use a version control system such as git.
+Once you are comfortable with your code and want to share it more publicly, an opam file can be published to the central OCaml [opam repository](https://github.com/ocaml/opam-repository/).  This is a collection of tens of thousands of packages that have been contributed freely by the community since 2013.  The opam-repository does not contain the full source code to your project; instead, it tracks pointers to different versions of your code, and also the various compatibility constraints to automatically figure out which versions work with each other.  The usual mechanism to track your releases is to use a version control system such as git.  You can [browse the packages](https://opam.ocaml.org) online to see what's available.
 
 How do you actually manipulate opam files?  There are several tools that can parse these files and repositories and install the software you want.  The primary reference implementation that runs on macOS and Linux is also the [opam client](https://www.notion.so/opam-client-af5eb8b02bdf4c17931004d79002243e) , and is the first thing you will want to configure on your system to get started.  Read on below for more details about opam files and the client.  If you'd like to just get on with a particular task, skip to the next section to find out which archetype you best fit into.
 
@@ -38,7 +42,15 @@ How do you actually manipulate opam files?  There are several tools that can par
 
 Below are three lists: archetypical users, meet the tools and community libraries. All workflows have one or more users in mind with most using a tool from the OCaml Platform. The community libraries are popular projects which have become standard for certain workflows. 
 
-To get started with workflows, open the user that best describes you and start exploring!  
+To get started with workflows, open the user that best describes you and start exploring! 
+
+## Learning the Language
+
+If you are just getting started on learning the OCaml language, there are several resources to get you going.  The [beginner](https://www.notion.so/Beginner-7994c560f3ee4d2f98c13b14be0a8065) workflows will get you familiar with where you can find answers to common questions, find interactive playgrounds, and hook into possibly familiar learning mechanisms such as Jupyter notebooks.
+
+If you are teaching OCaml to a class, then you will need to support the installation of the tools on a variety of platforms, and hook into grading systems.  The [teaching](https://www.notion.so/Teachers-9c24549abbc14de8be59002ea1bd42b3) workflows will cover that, and also link to projects that exist to support your efforts.
+
+## Developing in OCaml
 
 [Archetypical Users](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff.csv)
 
