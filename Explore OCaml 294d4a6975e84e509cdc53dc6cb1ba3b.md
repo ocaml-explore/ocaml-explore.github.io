@@ -42,17 +42,23 @@ Below are three lists: archetypical users, meet the tools and community librarie
 
 To get started with workflows, open the user that best describes you and start exploring! 
 
-## Learning the Language
+## Learning the Language 📚
 
-If you are just getting started on learning the OCaml language, there are several resources to get you going.  The [beginner](https://www.notion.so/Beginner-7994c560f3ee4d2f98c13b14be0a8065) workflows will get you familiar with where you can find answers to common questions, find interactive playgrounds, and hook into possibly familiar learning mechanisms such as Jupyter notebooks.
+**Beginner:** If you are just getting started on learning the OCaml language, there are several resources to get you going.  The [beginner](https://www.notion.so/Beginner-7994c560f3ee4d2f98c13b14be0a8065) workflows will get you familiar with where you can find answers to common questions, find interactive playgrounds, and hook into possibly familiar learning mechanisms such as Jupyter notebooks.
 
-If you are teaching OCaml to a class, then you will need to support the installation of the tools on a variety of platforms, and hook into grading systems.  The [teaching](https://www.notion.so/Teachers-9c24549abbc14de8be59002ea1bd42b3) workflows will cover that, and also link to projects that exist to support your efforts.
+**Teachers:** If you are teaching OCaml to a class, then you will need to support the installation of the tools on a variety of platforms, and hook into grading systems.  The [teaching](https://www.notion.so/Teachers-9c24549abbc14de8be59002ea1bd42b3) workflows will cover that, and also link to projects that exist to support your efforts.
 
-## Developing in OCaml
+## Developing in OCaml 🧠
 
-If you have found an OCaml application that you want to use and possibly extend, then read on about the Application Developer workflows.  This will get you started with a build environment and all the dependencies you need to build the application, and also help you configure an IDE.
+**Application Developer:** If you have found an OCaml application that you want to work on and extend, then read on about the [Application Developer](https://www.notion.so/Application-Developers-5158b951046948ae8080c5faae4c5485) workflows.  This will get you started with a build environment and all the dependencies you need to build the application within a modern IDE.
 
-If you want to break up your application into reusable chunks, then you will create OCaml libraries. Libraries are no use by themselves as they need to be linked into an application to be used, but it is extremely common in a functional language such as OCaml to such create units of abstractions.  As a library author, you will learn how to partition your source code into multiple libraries, how to write unit tests and documentation, apply auto-formatting, and eventually publish them publicly to the central opam repository.
+**Library Author:** If you want to break up your application into reusable chunks, then you will create OCaml libraries.  As a [Library Author](https://www.notion.so/Library-Authors-33d664dd3a4d487a9f707092c9bd4b6b), you will learn how to partition your source code into multiple libraries, to write unit tests and documentation, to apply auto-formatting, and eventually publish them publicly to the central opam repository.
+
+## Distributing OCaml code 🌏
+
+**End User:** If you are an [End User](https://www.notion.so/End-User-6cd8d2b414154ee4b1bf176b4bd0b83d3920b4a06c463259b) that simply wants to install an OCaml application as fast as possible on your platform, read on about how to do that.  Beyond the standard opam client, there are also several domain-specific ones that may be more useful to you, such as the opam2nix binary distributor or the esy client that supports npm-like description files.
+
+**Distribution Manager:** If you are maintaining OCaml on a particular operating system, you will be juggling the various quirks of OCaml applications and libraries with hundreds of other programming languages and build systems.  The [Distribution Manager](https://www.notion.so/Distribution-Manager-bf0c4f1ec2534863920b4a06c463259b) workflows collect tools that operate over the opam repository metadata and provide mechanisms to programmatically translate them to your own distribution.
 
 [Archetypical Users](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff.csv)
 
@@ -98,7 +104,7 @@ The OCaml Platform is an idealised, one-stop-shop for all things OCaml. But it t
 
 [Further Reading](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Further%20Reading%20e586ad911323446196997e9cdc77d17f.csv)
 
-### TO BE REMOVED:
+### Further Thoughts
 
 ---
 
