@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>Documenting your project 5264337e86fa4889be1846e869f870a6</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Documenting your project</h1>
+<p>Libraries: ../Community%20Libraries%207088de737dff4e97934677e854bc7de8/odoc%20270acadc9bc7492d85befb78e7713384.md
+Platform: ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/mdx%20e991b555d626476589b92fe48094ed44.md, ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/dune%20release%2058149b0904fb454895b4b06a6827fe47.md, ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/dune%207063fd3c0d5d4074b7a5c0d97933149c.md
+REMOVE ME: Drafted: No
+Related Workflows: Releasing%20new%20versions%20of%20your%20project%20on%20opam%20d30cea1d32a7402e8350da4878aceeec.md
+Short Description: Write maintainable and useful documentation for your library</p>
+<h2>Overview</h2>
+<hr />
+<p>Documentation is vital for your library to be used by other people, it also helps others to contribute and even reminds you of your design decisions.</p>
+<p>The goal of the  workflow is to make your documentation:</p>
+<ul>
+<li>Easily updatable - your documentation should evolve with your project and not be a painful experience in updating it.
+</li>
+<li>Informative yet concise - your documentation workflow should allow you to be verbose where you need to be but concise everywhere else, code examples can tell a better story than prose in most cases.
+</li>
+</ul>
+<h2>Recommended Workflow</h2>
+<hr />
+<h3>Generating Documentation</h3>
+<p>OCaml has a tool, odoc, for generating documentation from comments in the code that start with a double asterisk <code>(** my nice comment *)</code>.</p>
+<p>The full documentation for the syntax of documentation comments can be found here:</p>
+<p>If you are already using opam and dune then the hardest part to generating documentation is actually writing it. From the root of your project it is as simple as:</p>
+<pre><code class="language-bash">opam install odoc 
+dune build @doc 
+</code></pre>
+<p>This will build a documentation website in <code>_build/default/_doc</code>.</p>
+<h3>Releasing Documentation</h3>
+<p>If you are hosting your code on Github then you can also go one step further and deploy your documentation to <a href="https://pages.github.com/">Github Pages</a>. This is done using dune-release which will build your documentation for you and push it to a <code>gh-pages</code> branch before moving it upstream.</p>
+<p>Dune-release will build the documentation from the <em>distribution archive</em> - this means in order to get</p>
+<h2>Real World Examples</h2>
+<hr />
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

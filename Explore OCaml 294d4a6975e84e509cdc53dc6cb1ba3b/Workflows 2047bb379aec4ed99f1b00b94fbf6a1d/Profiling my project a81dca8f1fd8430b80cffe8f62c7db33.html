@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>Profiling my project a81dca8f1fd8430b80cffe8f62c7db33</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Profiling my project?</h1>
+<p>Platform: ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/dune%207063fd3c0d5d4074b7a5c0d97933149c.md
+REMOVE ME: Drafted: Yes
+Resources: ../Further%20Reading%20e586ad911323446196997e9cdc77d17f/A%20Brief%20Trip%20through%20Space%20Time%20b0e475d9dbb441b689c136e26d109b1d.md, ../Further%20Reading%20e586ad911323446196997e9cdc77d17f/Profiling%20OCaml%20Code%20955474bf5a1b4aa3b3c228e3da0f50c9.md
+Short Description: Profile the memory and peformance of your application
+Users: ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Library%20Authors%2033d664dd3a4d487a9f707092c9bd4b6b.md, ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Application%20Developers%205158b951046948ae8080c5faae4c5485.md</p>
+<h2>Overview</h2>
+<hr />
+<p>For profiling programs there tend to be two main properties that most developers care about:</p>
+<ol>
+<li>Performance
+</li>
+<li>Memory Usage
+</li>
+</ol>
+<p>OCaml is a garbage-collected programming language, but there are ways to alleviate the the strain on the GC. There is also good support for profiling the performance of your program to find the sections that are consuming the most execution time.</p>
+<h2>Recommended Workflow</h2>
+<hr />
+<h3>Memory</h3>
+<p>To enable memory profiling (much like with fuzzing) you need to install specific variants of the OCaml compiler - in particular it must have <code>+spacetime</code> in its package name.</p>
+<p>Spacetime monitors the OCaml heap - this is where values are stored if they are not represented as unboxed integers. You can set the interval you want spacetime to monitor at by issuing:</p>
+<pre><code class="language-bash">ocamlopt -o &lt;executable&gt; somefile.ml
+OCAML_SPACETIME_INTERVAL=1000 &lt;executable&gt;
+</code></pre>
+<p><em><strong>Note: this is a little dependent on what shell you use, for example with fish you will have to preprend <code>env</code> to the <code>OCAML...</code> command.</strong></em></p>
+<p>The workflow is very similar to <code>gprof</code> with OCaml in that you run the instrumented version which produces additional files, and then use a tool to make sense of the results. If we have some <code>mem_test.ml</code> file we want to profile, the series of commands may look something like this:</p>
+<pre><code class="language-bash"># Create a new spacetime enable switch 
+opam switch create 4.10.0+spacetime
+eval $(opam env)
+
+# Install the memory profiling view
+opam install prof_spacetime 
+
+# Compile your code
+ocamlopt -o mem_test mem_test.ml
+
+# Run the executable with profiling enabled 
+OCAML_SPACETIME_INTERVAL=1000 ./mem_test
+
+# Process the results - fill in your unique &lt;id&gt;
+prof_spacetime process spacetime-&lt;id&gt;
+
+# View the results in a browser 
+prof_spacetime serve -p spacetime-&lt;id&gt;.p
+</code></pre>
+<h3>Performance</h3>
+<p>Perf is a tool that can be used to profile programs without any additional instrumentation.</p>
+<h2>Alternatives</h2>
+<hr />
+<h3>Performance with <code>gprof</code></h3>
+<p><em><strong>Note: gprof is only supported up to version 4.08.0 of the OCaml compiler. Additionally, because of the required linking options with Clang and MacOS you may encounter the following error &quot;<strong>the clang compiler does not support -pg option on versions of OS X 10.9 and later</strong>&quot;</strong></em></p>
+<p><a href="https://sourceware.org/binutils/docs/gprof/">Gprof</a> is the GNU profiler and can be used to track how much time is spent in different parts of your application. Like memory profiling this requires additional instrumentation in your binaries. However, unlike spacetime profiling, it doesn't require a specific switch, just some flags to be set.</p>
+<p>In the simplest case (compiling by hand) the following is sufficient:</p>
+<pre><code class="language-bash"># Create compatible compiler in new switch  
+opam switch create 4.08.0
+eval $(opam env)
+
+# Compile the code with profiling enabled 
+ocamlopt -p -o test test.ml 
+
+# Run the code
+./test
+
+# View the results 
+gprof test | less 
+</code></pre>
+<p>If you are using dune to build your project you will need something like the following in your dune file at the root of your project:</p>
+<pre><code>(env
+ (perf
+  (flags (:standard -p))))
+</code></pre>
+<p>There after the process is very similar:</p>
+<pre><code># Compile the program with profiling enabled 
+dune build --profile perf 
+
+# Run the program
+_build/default/test.exe
+
+# See the profiling results 
+gprof _build/default/test.exe | less 
+</code></pre>
+<h3>Real World Examples</h3>
+<hr />
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

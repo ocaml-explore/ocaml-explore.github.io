@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>Compiling for Y on X 4909055b78bc45c2b3100e492fbd97a9</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Compiling for Y on X</h1>
+<p>Platform: ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/dune%207063fd3c0d5d4074b7a5c0d97933149c.md
+REMOVE ME: Drafted: Yes
+Resources: ../Further%20Reading%20e586ad911323446196997e9cdc77d17f/OCaml%20on%20Baremetal%20Shakti%20RISC%20V%20Processor%20c88def6eb57b47699d0b4415b0711207.md
+Short Description: Compile code to run on different architectures
+Users: ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Application%20Developers%205158b951046948ae8080c5faae4c5485.md</p>
+<h2>Overview</h2>
+<hr />
+<p>Cross-compiling in OCaml is still an experimental feature, but there are plans to make it a fully supported one in the future.</p>
+<p>Cross-compiling allows a programmer on an <em>x86</em> machine to compile OCaml code to run on a <em>RISC-V</em> device*.* Usually the target architecture is the same as the architecture our machine is running on. **This is particularly useful for embedded devices running architectures like <em>ARM-32, ESP-32 or RISC-V</em>.</p>
+<h2>Recommended Workflow</h2>
+<hr />
+<p>Dune has built-in support for cross-compilation thanks to toolchains in OCamlfind. To work with cross-compiling you will need the following:</p>
+<ol>
+<li>The appropriate cross-compiling toolchains installed - OCaml uses a C compiler to build the OCaml compiler so a cross-compiling C compiler will be necessary.
+</li>
+<li>A switch with a cross-compiling repository setup - this will handle installing the OCaml cross-compiler.
+</li>
+</ol>
+<p>Luckily, that is fairly easy. Below, in real world examples, there are some repositories you can use. Instructions for installing say the <em>RISC-V</em> cross-compiler can be found in <a href="https://github.com/patricoferris/ocaml-on-riscv/blob/trunk/opam/Dockerfile">this Dockerfile</a>. In the future the OCaml compiler will support cross-compilation out-of-the-box but for now you will have to use some modified versions of the compiler.</p>
+<h2>Real World Examples</h2>
+<hr />
+<h3>Example opam repositories</h3>
+<p><a href="https://github.com/well-typed-lightbulbs">Well-typed lightbulbs</a></p>
+<p><a href="https://github.com/mirage-shakti-iitm">mirage-shakti-iitm</a></p>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

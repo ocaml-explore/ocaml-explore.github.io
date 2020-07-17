@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>opam client af5eb8b02bdf4c17931004d79002243e</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>opam client</h1>
+<h2>Overview</h2>
+<hr />
+<p>opam is the OCaml Package Manager. It handles the sharing of libraries and code, dependency management and installation. In addition to this it also handles compiler installation. Opam handles what the following do for other languages:</p>
+<ul>
+<li>Rust: <code>rustup</code> &amp; <code>cargo</code>
+</li>
+<li>Node (Javascript): <code>nvm</code> &amp; <code>npm</code> (or <code>yarn</code>)
+</li>
+<li>Python: <code>pyenv</code> &amp; <code>pip</code>
+</li>
+</ul>
+<p><img src="opam%20client%20af5eb8b02bdf4c17931004d79002243e/opam.v1.png" alt="opam%20client%20af5eb8b02bdf4c17931004d79002243e/opam.v1.png" /></p>
+<p>A simplfied diagram of some of the key features in opam</p>
+<h3>Key Concepts</h3>
+<hr />
+<ul>
+<li>
+<p>Switches</p>
+<p>In the official documentation switches are described as (<code>opam switch --help</code>):</p>
+<blockquote>
+<p>This command is used to manage &quot;switches&quot;, which are independent
+installation prefixes with their own compiler and sets of installed and
+pinned packages. This is typically useful to have different versions of
+the compiler available at once.</p>
+</blockquote>
+</li>
+<li>
+<p>Repositories</p>
+<p>Opam repositories are the source of truth for what <code>opam</code> can and cannot install. If the repostory doesn't have package <code>X</code> with an opam file, then it won't be installed. The default repository is where most people will begin and end their journey with repositories. This is where you can publish new releases of your libraries and others can update and upgrade to these versions.</p>
+<p>This is held on Github:</p>
+<p><a href="https://github.com/ocaml/opam-repository">ocaml/opam-repository</a></p>
+<p>Note in the diagram above, in the unselected switch, there are two repositories. There is no limit on the number you can have and when installing libraries <code>opam</code> will check each for a folder that matches what you are looking for. The above is an example of what you would have to do to start cross-compiling. If you are interested check:</p>
+</li>
+<li>
+<p>Updating &amp; Upgrading</p>
+<p>Hopefully with the explanation of repositories it is a little clearer what updating and upgrading means. When you install and opam switch you get a local cloned copy of the opam repository. As you code this will remain unchanged even as library authors publish new releases.</p>
+<p>To get the newer (and hopefully better!) code you will essentially have to <code>git pull</code> the latest opam repostiory (<code>opam update</code>) and then tell opam to install the latests version of libraries (<code>opam upgrade</code>). By supplying a single package to these commands you won't update and upgrade everything.</p>
+<p>Within your library opam file you can specify constraints on version numbers to ensure your code works correctly. A major version change say <code>irmin.1.0.0</code> to <code>irmin.2.0.0</code> would likely break your code.</p>
+</li>
+<li>
+<p>Pinning</p>
+<p>Pinning is a method for overriding the opam repository. In the diagram our repository has a version of <code>alcotest</code> at <code>1.1.0</code> - under normal circumstances this is what will be installed and used to build libraries that depend on it.</p>
+<p>But say we want to add a new feature or fix some code in <code>alcotest</code> and then try building some libraries that use it, do we have to release a new version or manually change the opam repository? No. You can run <code>opam pin add alcotest . --kind=path</code> from within the <code>alcotest</code> library.</p>
+<p>It is important to know that opam is git-based when it comes to source code hence the need to specify <code>--kind=path</code> otherwise it will try and use the latest commit and you don't want to commit everytime you want to try to change something.</p>
+</li>
+<li>
+<p>Source and Show</p>
+<p>Source and show are very useful commands for library authors. Source downloads the latest code attached to the version of a given library.</p>
+<p>Show allows you to see the metadata associated with a library. You can even print the opam file with: <code>opam show &lt;library&gt; --raw</code></p>
+</li>
+<li>
+<p>Plugins</p>
+<p>Plugins in opam are ways to extend opam's functionality in a more accessible way (anyone can write a plugin!). One of the most used is <code>depext</code> - you can tell it is a plugin from it's opam file:</p>
+<p><code>tags: &quot;flags:plugin&quot;</code></p>
+<p><a href="https://github.com/ocaml-opam/opam-depext">ocaml-opam/opam-depext</a></p>
+<p>Depext tries to install external dependencies for you. Other plugins include <code>opam-user-setup</code> which can be used to setup common tooling for supported editors like <em>emacs</em> or <em>vim.</em></p>
+</li>
+</ul>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

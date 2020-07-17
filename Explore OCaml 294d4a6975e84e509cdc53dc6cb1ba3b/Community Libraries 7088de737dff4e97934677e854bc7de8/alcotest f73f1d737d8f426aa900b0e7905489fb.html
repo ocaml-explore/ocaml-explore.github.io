@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>alcotest f73f1d737d8f426aa900b0e7905489fb</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>alcotest</h1>
+<p>Created: Jul 6, 2020 10:43 AM
+Related to Workflows (Libraries): ../Workflows%202047bb379aec4ed99f1b00b94fbf6a1d/Adding%20units%20tests%20to%20your%20project%20a53ff6e7d3914ff89fad69fa603a309a.md</p>
+<h2>Overview</h2>
+<hr />
+<p><a href="https://github.com/mirage/alcotest">mirage/alcotest</a></p>
+<h3>Key Concepts</h3>
+<hr />
+<p>The structure of your tests should look something like:</p>
+<pre><code>.
+|-- suite1
+|   |-- Quick
+|   |   |-- test1
+|   |   `-- test2
+|   `-- Slow
+|       `-- test1
+`-- suite2
+    |-- Quick
+    |   `-- test1
+    `-- Slow
+        |-- test1
+        `-- test2
+</code></pre>
+<p>A typical way of achieving this is to have separate files for each test-suite for a particular component of your project e.g. <code>test_parser.ml</code> where you define unit tests for your parser than in an <code>mli</code> file export the tests:</p>
+<pre><code>val tests : unit Alcotest.test_case list
+</code></pre>
+<p>After that you can collect all of your suites together in <code>[test.ml](http://test.ml)</code> file that will be run for testing your project. It is also common case to have <code>[testable.ml](http://testable.ml)</code> file where you can produce testable version of your types:</p>
+<pre><code class="language-ocaml">(* Some type you have - camel.ml *)
+type camel = Bactrian of string 
+
+let pp_camel fmt = function
+	| Bactrian str  -&gt; Format.pp_print_string fmt str 
+
+let compare a b = match a, b with 
+	| Bactrian s1, Bactrian s2 -&gt; String.compare s1 s2
+
+(* Making camels testable - testable.ml *) 
+let camel = Alcotest.testable Camel.pp_camel Camel.compare
+</code></pre>
+<h3>In the Wild</h3>
+<hr />
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

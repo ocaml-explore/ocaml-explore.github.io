@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>opam files e6fb594018134e3d991e4fccf83abd41</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>opam files</h1>
+<p>Your project's opam file is the key to unlocking the power of the OCaml Platform. It will be used for much more than just publishing your library for others to use - with it for example you can:</p>
+<ul>
+<li>Automate the installation of external dependencies
+</li>
+<li>Give users points of contact - like where to submit issues
+</li>
+<li>Pin your project locally making it much easier to develop other tools and do continuous integration
+</li>
+</ul>
+<h3>Versioning</h3>
+<p>One of the best features of opam files is versioning. Every file begins with <code>opam-version</code>, a field indicating what version of opam your project uses.</p>
+<h3>Example File</h3>
+<p>Below is a very minimal opam file and underneath explanations for parts which need them:</p>
+<pre><code>opam-version: &quot;2.0&quot;
+version: &quot;~dev&quot;
+synopsis: &quot;A short sentence about your project&quot;
+maintainer: &quot;&lt;username&gt; &lt;email&gt;&quot;
+authors: &quot;&lt;username1&gt; &lt;email1&gt;&quot;
+license: &quot;ISC&quot;
+homepage: &quot;&lt;github-page-or-similar&gt;&quot;
+bug-reports: &quot;&lt;github-issues-page-or-similar&gt;&quot;
+depends: [
+  &quot;ocaml&quot;   {&gt;= &quot;4.07.0&quot;}
+  &quot;dune&quot;    {&gt;= &quot;2.0.0&quot;}
+  &quot;zarith&quot;
+  &quot;alcotest&quot; {with-test}
+]
+build: [
+  [&quot;dune&quot; &quot;build&quot; &quot;-p&quot; name &quot;-j&quot; jobs]
+  [&quot;dune&quot; &quot;runtest&quot; &quot;-p&quot; name] {with-test}
+]
+</code></pre>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   Incorporating non OCaml code into your project
+   e14df2f2cdff4b20a2dce9990f11130f
+  </title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Incorporating non-OCaml code into your project</h1>
+<p>Libraries: ../Community%20Libraries%207088de737dff4e97934677e854bc7de8/cstruct%20c5b3b9a06ba248ceb3e2e27e17d3d5eb.md
+Platform: ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/dune%207063fd3c0d5d4074b7a5c0d97933149c.md
+REMOVE ME: Drafted: Yes
+Resources: ../Further%20Reading%20e586ad911323446196997e9cdc77d17f/A%20Beginners%20Guide%20to%20OCaml%20Internals%202bb35cb1864f4b33bf40f31b11ac4acf.md, ../Further%20Reading%20e586ad911323446196997e9cdc77d17f/Communication%20between%20C%20and%20Objective%20Caml%20fafade4513184ea29737b465a2362046.md
+Short Description: Add C or Rust code to your OCaml project
+Users: ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Application%20Developers%205158b951046948ae8080c5faae4c5485.md, ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Library%20Authors%2033d664dd3a4d487a9f707092c9bd4b6b.md</p>
+<h2>Overview</h2>
+<hr />
+<p>Sometimes OCaml just can't do what lower level languages can do or you want to use pre-existing code written in C or Rust from OCaml.</p>
+<h2>Recommended Workflow</h2>
+<hr />
+<h3>Interacting with C</h3>
+<p>To interact with C code you need to use the Foreign Function Interface (FFI) in OCaml and make some changes to your <code>dune</code> files to incorporate the extra code. To use a foreign C function in OCaml you need to add:</p>
+<pre><code class="language-ocaml">external &lt;ocaml-name&gt; : &lt;type-of-function&gt; = &quot;&lt;c-function-name&gt;&quot;
+</code></pre>
+<p>And then in your dune file you need to include the C code:</p>
+<pre><code>(executable
+ (name main)
+ (foreign_stubs
+  (language c)
+  (names &lt;c-filename&gt;)))
+</code></pre>
+<p>Take care with the difference between how C represents runtime values and how OCaml represents them (covered in the linked resources page). See this dune documentation page for more options for the <code>foreign_stubs</code> and this OCaml manual page for a more formal introduction to the C FFI.</p>
+<h3>Interfacing with C Structs</h3>
+<p>There is a <code>cstruct</code> library linked in the libraries tag that allows you to read and write structs from the C programming language.</p>
+<h3>Interacting with Rust</h3>
+<p>Coming soon...</p>
+<h2>Real World Examples</h2>
+<hr />
+<h3>Using C code</h3>
+<p><a href="https://github.com/mirage/digestif/tree/master/src-c/native">mirage/digestif</a></p>
+<h3>Using Cstruct</h3>
+<p><a href="https://github.com/mirage/ocaml-git">mirage/ocaml-git</a></p>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

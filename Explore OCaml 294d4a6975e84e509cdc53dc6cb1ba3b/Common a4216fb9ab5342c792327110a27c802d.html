@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>Common a4216fb9ab5342c792327110a27c802d</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Common</h1>
+<p>As outlined in the brain dump, one of the hardest parts of getting started is knowing which tools to use, what to install, what exactly it means to run <code>brew install ocaml</code>, why it is different for each platform etc. This document seeks to outline these problems.</p>
+<p><a href="Brain%20dump%20of%20Personal%20Challenges%20Misconceptions%204d9678ea024c4513b2020d14f62e3437.html">Brain-dump of Personal Challenges &amp; Misconceptions </a></p>
+<p><a href="OCaml%20Ecosystem%20History%20fbbea0e78ec04e3aa7040ceeed0d37dc.html">OCaml Ecosystem History</a></p>
+<hr />
+<p>There are several generic ways to get OCaml running on your computer (note on Windows the story is quite different...):</p>
+<ol>
+<li>
+<p><em><strong>Binaries</strong></em> - a binary is an executable. Using the operating system package manager you install a prebuilt version of a tool (the ocaml compiler, the opam tool). Someone has gone to the effort of building the same tool on the same OS and making it available online for you.</p>
+<pre><code class="language-bash"># Ubuntu 18.04 as of 02/06/2020
+apt-get update 
+# OS Package Manager prebuilt binary
+apt-get install ocaml 
+ocamlopt --version # 4.05.0
+</code></pre>
+<p>As you can see, one of the downsides to this approach is it needs maintained by distribution managers. However for massive projects (like GCC) it removes the hassle/long build times of building from source.</p>
+</li>
+<li>
+<p><em><strong>From Source by Hand</strong></em> - this approach is frought with chances to mess up and can be extremely tricky to do in a OS independent way. But one approach is to follow the documentation on building things from source.</p>
+<pre><code class="language-bash"># Ubuntu 18.04 as of 02/06/2020
+apt-get update 
+apt-get install git make 
+# Get the source code using git 
+git clone https://github.com/ocaml/ocaml.git
+# Change into the ocaml directory 
+cd ocaml 
+# Configure works out your OS, what C compiler to use etc. 
+./configure 
+# Make world (OCaml bytecode) and opt (native compiler)
+make -j16 world.opt
+</code></pre>
+</li>
+<li>
+<p><em><strong>From Source with opam</strong></em> - this is a marriage of the two above. Installing prebuilt binaries for opam (to build it from source you would need OCaml installed!) and use it to install the compiler. There are two way this can be done, either <a href="https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh">using a handy script</a> which checks what OS you are running on and installs for you.</p>
+<pre><code class="language-bash"># Ubuntu 18.04 as of 02/06/2020
+apt-get update 
+# Install curl to get the script from the internet
+apt-get install curl
+# Download and save it as opam.sh
+curl https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh &gt; opam.sh
+# Make it executable
+chmod +x opam.sh
+# Run it (you will need to choice the location to install it)
+./opam.sh
+</code></pre>
+<p>From here you can build the ocaml compiler from source by issuing the command <code>opam switch create 4.10.0</code> for example to get the <code>4.10.0</code> compiler. The notion of switches is dealth with in:</p>
+<p><a href="https://www.notion.so/opam-b30ac2658b3b48c7ab2ec2786597d830">opam</a></p>
+</li>
+</ol>
+<hr />
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

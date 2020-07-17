@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>Thoughts whilst writing Workflows 8ade52f908514919a9397891b7233a67
+  </title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Thoughts whilst writing Workflows</h1>
+<ol>
+<li>If I'm building a new project (<strong>not opam</strong>) and I am adding CI there is no tool for installing just the dependencies I want from the dune file. <code>dune external-lib-deps --missing @@default</code> gets you part of the way there but not fully.
+<ul>
+<li>Will <em>duniverse</em> solve this problem? Should <em>dune</em> be able to install the relevant opam packages and ask about OS system ones?
+</li>
+<li>What does the opam-dune story look like, how tightly integrated will the two become? What jobs do they do - initialisation of opam files in dune?
+</li>
+</ul>
+</li>
+<li>The goal, as far as I can tell, is to unify the platform with the <code>opam</code> metadata file with its key use of versioning to support powerful compatability.
+<ul>
+<li>This doesn't mean using the opam client (although it might be strongly recommended) - for new people is this confusing to have a metadata file called <em>opam</em> even if I'm not publishing it? Perhaps this is like asking whether I need the <code>package.json</code> file if I'm not putting it on <code>npm</code> - in which case it isn't so much of an issue.
+</li>
+</ul>
+</li>
+</ol>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>
+   Setting up Continuous Integration for your Project
+   d9e5ae419f03401da5ee3b285d52bb83
+  </title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Setting up Continuous Integration for your Project</h1>
+<p>Platform: ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/mdx%20e991b555d626476589b92fe48094ed44.md, ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/bun%2078ac8d6aa4b343b9a6658c4d2ec7a757.md
+REMOVE ME: Drafted: Yes
+Related Workflows: Adding%20units%20tests%20to%20your%20project%20a53ff6e7d3914ff89fad69fa603a309a.md, Keeping%20your%20code%20clean%207443e9c915104226840b1e0a19cd9cd8.md
+Short Description: Add CI to your project using Github Actions
+Users: ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Library%20Authors%2033d664dd3a4d487a9f707092c9bd4b6b.md, ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Application%20Developers%205158b951046948ae8080c5faae4c5485.md</p>
+<h2>Overview</h2>
+<hr />
+<p>Continuous integration (CI) has become a basic necessity for managing projects, especially when there are multiple contributors. The idea is that for code to make it into production (or to get a &quot;seal of approval&quot; to move to the main branch) - code should pass a series of quality tests.</p>
+<p>These tests may include:</p>
+<ol>
+<li>Unit tests - a series of small, functional tests to make sure implementations still do what they are supposed to.
+</li>
+<li>Integration tests - ensuring multiple components within your project play nicely together
+</li>
+<li>Formatting - although it may seem pedantic, well-formatted code (with uniformity) across the project makes it (a) easier for people to find bugs and (b) more accessible to new contributors.
+</li>
+</ol>
+<p>The point of CI is to automate most of this away. Wherever your project lives it should constantly be checking that new code meets the quality tests before allowing that code to make into &quot;production&quot;.</p>
+<h2>Recommended Workflow</h2>
+<hr />
+<p>Github offers a feature called Github Actions. It works on the principle of <em>workflows -</em> different things you might want to do on different &quot;actions&quot; within your Github repository. This can include releasing code, testing code etc. Here we're focusing on testing.</p>
+<p>To get started you will need to create a <code>.github</code> directory in your repostory and inside it a <code>workflows</code> repository. Now you can specify what you want to happen by creating a <code>config.yml</code> file.</p>
+<p>One of the biggest advantages of Github Actions is the modularity and &quot;action reuse&quot;. For example if you needed to use &quot;curl&quot; to get some resource from the internet or trigger some event at an endpoint <a href="https://github.com/marketplace/actions/github-action-for-curl">there's an action for that</a>.</p>
+<p>So what does a basic OCaml config file for making quality tests look like:</p>
+<pre><code class="language-yaml">name: ospike
+on: [push]
+jobs:
+  run:
+    name: tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        ocaml-version: [&quot;4.07.0&quot;]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Use OCaml ${{ matrix.ocaml-version }}
+        uses: avsm/setup-ocaml@v1.0
+        with:
+          ocaml-version: ${{ matrix.ocaml-version }}
+      - run: opam pin add ospike.dev -n .
+      - run: opam depext -yt ospike
+      - name: Install Deps
+        run: opam install -t . --deps-only
+      - name: Build
+        run: opam exec -- dune build
+      - name: Test
+        run: opam exec -- dune runtest
+</code></pre>
+<h2>Alternatives</h2>
+<hr />
+<p>TravisCI is a continuous integration tool that is very flexible and also robust. There are two main ways you can use TravisCI.</p>
+<p><code>ocaml-ci-scripts</code> is a collection of useful scripts for building a complex CI testing platform. One of the main goals of CI is to make sure your code runs well <em>everywhere.</em> This implies forming a matrix of operating systems and OCaml compiler versions to make sure your code runs properly.</p>
+<p>There are quite few scripts such as <code>.travis.opam.sh</code> ,  <code>.travis.docker.sh</code> and even <code>.travis.mirage.sh</code></p>
+<p>Each is built around environment variables in order to execute different jobs with say different linux distributions, ocaml versions etc.</p>
+<h2>Real World Examples</h2>
+<hr />
+<p><a href="https://github.com/avsm/ocaml-yaml/blob/master/.github/workflows/test.html">avsm/ocaml-yaml</a></p>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>
