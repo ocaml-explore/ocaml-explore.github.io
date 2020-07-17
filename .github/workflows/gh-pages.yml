@@ -1,6 +1,5 @@
 name: Github Pages
 on:
-  push:
   workflow_dispatch:
     tags:
       description: 'Rebuild HTML website'  
