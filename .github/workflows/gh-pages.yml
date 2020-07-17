@@ -37,8 +37,8 @@ jobs:
       run: unzip ./notion.zip -d ./notion
     - name: Build site 🔨
       run: |
-        ls && pwd
         opam exec -- onotion build
+        cp ./static/main.css ./notion
     - name: Deploy to GH Pages 🚀
       uses: JamesIves/github-pages-deploy-action@3.5.7
       with:
