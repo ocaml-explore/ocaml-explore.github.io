@@ -2,3 +2,6 @@
 /.vscode/
 /_build/
 /env
+/_opam
+/*.zip
+.merlin

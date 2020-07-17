@@ -18,7 +18,7 @@ let dump_html top_dir modifier (abs, _rel) =
     if Sys.file_exists (Filename.chop_extension filename ^ ".html") = false then
       let modified_omd = modifier (Omd.of_string file) in
       Html_gen.(
-        emit_page path
+        emit_page ("./" ^ path)
           (wrapper
              (Paths.gen_rel ~top_dir
                 ~abso:(fst (Core.Filename.split abs) ^ "/main.css"))
