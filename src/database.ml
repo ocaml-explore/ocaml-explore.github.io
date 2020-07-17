@@ -13,7 +13,7 @@ let row_to_page row : Page.t option =
   in
   if page_name = "" then None else Some (aux [] row)
 
-let from_csv (abso, _rel) =
+let from_csv abso =
   let extracted_name =
     Core.(
       List.drop_last
@@ -38,24 +38,24 @@ let from_csv (abso, _rel) =
 let get_url _db name files =
   let re = Re.compile (Re.str ("/" ^ name)) in
   let filter s = List.length (Re.matches re ("/" ^ Filename.basename s)) > 0 in
-  let possible_links = List.filter (fun s -> filter (fst s)) files in
+  let possible_links = List.filter (fun s -> filter s) files in
   let rec get_smallest smallest sofar = function
     | [] -> smallest
-    | (abso, rel) :: xs ->
-        let len = String.length abso in
-        if len < sofar then get_smallest (abso, rel) len xs
+    | f :: xs ->
+        let len = String.length f in
+        if len < sofar then get_smallest f len xs
         else get_smallest smallest sofar xs
   in
   if List.length possible_links = 1 then List.hd possible_links
   else
     let first = List.hd possible_links in
-    get_smallest first (String.length (fst first)) possible_links
+    get_smallest first (String.length first) possible_links
 
 let to_html top_dir db files =
   let gen_page (page : Page.t) =
     let url =
       Filename.chop_extension
-        (Paths.rel_diff db.path (fst (get_url db page.name files)))
+        (Paths.rel_diff db.path (get_url db page.name files))
       ^ ".html"
     in
     [%html {|<li><a href="|} url {|">|} [ Html.txt page.name ] {|</a></li>|}]

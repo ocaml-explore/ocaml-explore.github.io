@@ -52,6 +52,26 @@ let change_url_omd f ast =
               b with
               bl_desc = Omd.Paragraph { inline with il_desc = Link link };
             }
+        | Omd.Concat lst ->
+            let new_lst =
+              List.map
+                ~f:(fun elt ->
+                  match elt.il_desc with
+                  | Omd.Link link ->
+                      {
+                        elt with
+                        il_desc =
+                          Omd.Link
+                            { link with destination = f link.destination };
+                      }
+                  | _desc -> elt)
+                lst
+            in
+            {
+              b with
+              bl_desc =
+                Omd.Paragraph { inline with il_desc = Omd.Concat new_lst };
+            }
         | _ -> b)
     | _ -> b
   in

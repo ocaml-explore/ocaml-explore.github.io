@@ -2,9 +2,9 @@ type t = { name : string; properties : prop list }
 
 and prop = [ `Text of string | `Number of float | `Relation of string * string ]
 
-let dump_html top_dir modifier (abs, _rel) =
-  if Sys.file_exists (Utils.replace_spaces abs) then
-    let filename = Utils.replace_spaces abs in
+let dump_html top_dir modifier abso =
+  if Sys.file_exists (Utils.replace_spaces abso) then
+    let filename = Utils.replace_spaces abso in
     let title =
       Core.(
         List.last_exn (String.split ~on:'/' (Filename.chop_extension filename)))
@@ -21,6 +21,6 @@ let dump_html top_dir modifier (abs, _rel) =
         emit_page ("./" ^ path)
           (wrapper
              (Paths.gen_rel ~top_dir
-                ~abso:(fst (Core.Filename.split abs) ^ "/main.css"))
+                ~abso:(fst (Core.Filename.split abso) ^ "/main.css"))
              title
              [ Tyxml.Html.Unsafe.data (Omd.to_html modified_omd) ]))
