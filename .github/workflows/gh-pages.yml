@@ -1,8 +1,9 @@
 name: Github Pages
 on:
+  push:
   workflow_dispatch:
-    tags:
-      description: 'Rebuild HTML website'  
+  schedule:
+    - cron:  '32 * * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
