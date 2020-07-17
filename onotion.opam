@@ -12,13 +12,22 @@ depends: [
   "dune"    {>= "2.6.0"}
   "core"
   "cohttp-lwt-unix"
+  "tls"
+  "conduit"
   "omd" 
   "csv" 
   "re" 
   "tyxml" 
+  "tyxml-ppx"
+  "ppx_jane"
+  "lwt_ppx"
   "yojson"
   "decompress"
   "bigstringaf"
+]
+
+pin-depends: [
+  "omd.dev" "git+https://github.com/ocaml/omd"
 ]
 
 build: [

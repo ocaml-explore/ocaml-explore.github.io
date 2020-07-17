@@ -48,6 +48,7 @@ let get_task ~body () =
         C.post ~headers ~body (Uri.of_string Conf.get_tasks)
         >>= fun (_res, body) ->
         Cohttp_lwt.Body.to_string body >|= decompress >>= fun b ->
+        print_endline b;
         Lwt.return (Basic.from_string b)
       in
       let%lwt state, status =
@@ -56,18 +57,21 @@ let get_task ~body () =
             match List.assoc "results" assoc with
             | `List lst -> (
                 match List.hd lst with
-                | `Assoc assoc ->
+                | `Assoc first ->
                     Lwt.return
-                      (List.assoc "state" assoc, List.assoc "status" assoc)
+                      (List.assoc "state" first, first)
                 | _ ->
                     Lwt.fail (Failure "Wanted an Assoc to get state and status")
                 )
             | _ -> Lwt.fail (Failure "Wanted a List"))
         | _ -> Lwt.fail (Failure "Wanted an Assoc from response")
       in
-      match (state, status) with
-      | `String state, `Assoc values when "success" = state -> Lwt.return values
-      | _state, _status -> Lwt_unix.sleep 1.0 >>= fun () -> get_export_url ()
+      (match (state, status) with
+      | `String state, assoc when "success" = state -> (match List.assoc "status" assoc with
+        | `Assoc values -> Lwt.return values
+        | _ -> Lwt.fail (Failure "Expected status to be an assoc"))
+      | `String state, _status  when "in_progress" = state -> Lwt_unix.sleep 1.0 >>= fun () -> get_export_url ()
+      | _, _ -> Lwt.fail (Failure "Unknown Notion API Error"))
     with
     | Failure msg -> Lwt.fail (Failure ("Error from get_task: " ^ msg))
     | exn -> Lwt_io.print "Failed in getting tasks" >>= fun () -> Lwt.fail exn
@@ -103,7 +107,7 @@ let enqueue_task () =
 
 let get_zip output uri =
   C.get (Uri.of_string uri) >>= fun (_res, body) ->
-  Lwt_unix.(openfile (output ^ ".zip") [ O_CREAT; O_RDWR ] 777) >>= fun fd ->
+  Lwt_unix.(openfile (output ^ ".zip") [ O_CREAT; O_RDWR ] 0o777) >>= fun fd ->
   Cohttp_lwt.Body.to_string body >>= fun body ->
   let byte_body = Bytes.of_string body in
   Lwt_unix.write fd (Bytes.of_string body) 0 (Bytes.length byte_body)

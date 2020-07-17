@@ -76,4 +76,4 @@ let to_html top_dir db files =
   |}]
   in
   let rel_css = Paths.rel_diff db.path (top_dir ^ "/main.css") in
-  Html_gen.(emit_page db.path (wrapper rel_css db.name body))
+  Html_gen.(emit_page ("./" ^ db.path) (wrapper rel_css db.name body))

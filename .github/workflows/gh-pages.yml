@@ -1,0 +1,41 @@
+name: Github Pages
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+      with:
+        ref: workflow
+    - uses: avsm/setup-ocaml@v1.1.0
+      with:
+        ocaml-version: "4.10.0"
+    - run: opam pin add onotion.dev -n .
+    - name: External Dependencies
+      run: opam depext -yt onotion
+    - name: Dependencies
+      run: opam install .
+    - name: Build
+      run: opam exec -- dune build 
+    - name: Install
+      run: opam exec -- dune install 
+    - name: Export Notion 
+      run: opam exec -- onotion export
+      env:
+        notion_cookies: ${{ secrets.NOTION_COOKIES }}
+        active_user: ${{ secrets.ACTIVE_USER }}
+    - name: Unzip 
+      run: unzip ./notion.zip -d ./notion
+    - name: Build site 🔨
+      run: |
+        opam exec -- onotion build
+        cp ./static/main.css ./notion
+    - name: Deploy to GH Pages 🚀
+      uses: JamesIves/github-pages-deploy-action@3.5.7
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages 
+        FOLDER: notion
+      
+
