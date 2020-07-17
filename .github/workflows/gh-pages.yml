@@ -34,7 +34,7 @@ jobs:
         notion_cookies: ${{ secrets.NOTION_COOKIES }}
         active_user: ${{ secrets.ACTIVE_USER }}
     - name: Unzip 
-        run: unzip ./notion.zip -d ./notion
+      run: unzip ./notion.zip -d ./notion
     - name: Build site 🔨
       run: |
         ls && pwd
