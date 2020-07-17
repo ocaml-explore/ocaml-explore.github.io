@@ -1,5 +1,9 @@
 name: Github Pages
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+    tags:
+      description: 'Rebuild HTML website'  
 jobs:
   build:
     runs-on: ubuntu-latest
