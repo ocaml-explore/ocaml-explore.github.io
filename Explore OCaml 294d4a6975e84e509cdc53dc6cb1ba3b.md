@@ -4,8 +4,6 @@ One of the biggest problems programming languages face in a real world setting i
 
 Often these workflows are obvious... once you know them. Explore OCaml is a centralised source for workflows in OCaml categorised by user, tools and libraries with rich linking to external sources of information.
 
-/cont
-
 ---
 
 Here are some of the common problems users face: 
@@ -51,6 +49,10 @@ If you are just getting started on learning the OCaml language, there are severa
 If you are teaching OCaml to a class, then you will need to support the installation of the tools on a variety of platforms, and hook into grading systems.  The [teaching](https://www.notion.so/Teachers-9c24549abbc14de8be59002ea1bd42b3) workflows will cover that, and also link to projects that exist to support your efforts.
 
 ## Developing in OCaml
+
+If you have found an OCaml application that you want to use and possibly extend, then read on about the Application Developer workflows.  This will get you started with a build environment and all the dependencies you need to build the application, and also help you configure an IDE.
+
+If you want to break up your application into reusable chunks, then you will create OCaml libraries. Libraries are no use by themselves as they need to be linked into an application to be used, but it is extremely common in a functional language such as OCaml to such create units of abstractions.  As a library author, you will learn how to partition your source code into multiple libraries, how to write unit tests and documentation, apply auto-formatting, and eventually publish them publicly to the central opam repository.
 
 [Archetypical Users](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff.csv)
 

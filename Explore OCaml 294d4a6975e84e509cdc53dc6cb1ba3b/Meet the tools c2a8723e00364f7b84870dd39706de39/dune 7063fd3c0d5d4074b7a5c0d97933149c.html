@@ -30,18 +30,16 @@ Related to Workflows (Files): ../Workflows%202047bb379aec4ed99f1b00b94fbf6a1d/Fi
 Tags: building</p>
 <h2>Overview</h2>
 <hr />
+<p>Dune is a build tool that has been widely adopted in the OCaml world - it plays nicely with lots of other tools like opam and mdx. The documentation is very thorough - but do checkout the <em>key concepts</em> to get a high-level overview of how dune works and how to get started building your OCaml project.</p>
 <p><a href="https://dune.readthedocs.io/en/stable/">Welcome to dune's documentation! - dune documentation</a></p>
-<h3>Key Concepts</h3>
+<h2>Key Concepts</h2>
 <hr />
-<ul>
-<li>
-<p><strong>Compositional Builds:</strong> dune builds projects in a modular way generally based on file structure. This is somewhat different to say how <code>npm</code> would build Javascript projects more or less only based on the <code>package.json</code> at the root of the project. Looking at <em>Typical Project Layout</em> the compositionality is portrayed by the <code>dune</code> files in each directory. Each part is doing something different (building tests, the library, the unix version of the library etc.).</p>
-</li>
-<li>
-<p><strong>Declarative:</strong> unlike say <code>Makefiles</code>, dune is declarative. You tell it what you want and dune handles the nitty-gritty details but provides escape-hatches and <strong>a lot of customisability</strong> in your <code>dune</code> file to build complex projects.</p>
-</li>
-<li>
-<p>Typical Project Layout</p>
+<h3><strong>Compositional Builds</strong></h3>
+<p>Dune builds projects in a modular way generally based on file structure. This is somewhat different to say how <code>npm</code> would build Javascript projects more or less only based on the <code>package.json</code> at the root of the project. Looking at <em>Typical Project Layout</em> the compositionality is portrayed by the <code>dune</code> files in each directory. Each part is doing something different (building tests, the library, the unix version of the library etc.).</p>
+<h3>Declarative</h3>
+<p>Unlike say <code>Makefiles</code>, dune is declarative. You tell it what you want and dune handles the nitty-gritty details but provides escape-hatches and <strong>a lot of customisability</strong> in your <code>dune</code> file to build complex projects.</p>
+<p>This allows dune to be a great build tool no matter what your project size or complexity is.</p>
+<h3>Typical Project Layout</h3>
 <p>The following file structure is taken from <code>ocaml-yaml</code> and has been trimmed to show only the relevant dune-related parts and still be readable.</p>
 <p><a href="https://github.com/avsm/ocaml-yaml">avsm/ocaml-yaml</a></p>
 <pre><code>.
@@ -71,11 +69,9 @@ Tags: building</p>
 |   `-- yaml_unix.mli
 `-- yaml.opam
 </code></pre>
-</li>
-</ul>
-<h3>In the Wild</h3>
+<h2>In the Wild</h2>
 <hr />
-<p>Dune is used in a lot of OCaml projects thanks to its flexibility, integration with opam and lightweightness.</p>
+<p>Dune is used in a lot of OCaml projects thanks to its flexibility, integration with opam and lightweightness. Below are just a few projects using</p>
 
     
             
