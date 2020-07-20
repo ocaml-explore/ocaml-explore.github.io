@@ -28,29 +28,22 @@
 <details><summary>Libraries</summary>
     
     <ul><li><a href="../Community%20Libraries%207088de737dff4e97934677e854bc7de8/owl%209c4ae49c13a04a2bb0232370f2eb9216.html">owl</a></li></ul>
-  </details><h3>Who is it for and why?</h3>
+  </details><h2>Overview</h2>
 <hr />
 <p>Jupyter notebooks combine an interactive read-evaluate-print-loop (REPL) with markdown text (with support for LATEX) to offer a unique solution for people wanting to teach, explore OCaml or perform more data-centric operations (ML models etc.)</p>
 <p>From a learning point-of-view, students are more concerned with <em>syntax</em> and <em>concepts</em> rather than tooling (in the beginning). Much like <code>utop</code> the REPL format is great for learning, but with <strong>jupyter</strong> you can also write notes, explain algorithms etc.</p>
-<h3>Tools</h3>
+<h2>Recommended Workflow</h2>
 <hr />
-<p><a href="../opam%20client%20af5eb8b02bdf4c17931004d79002243e.html">opam client</a></p>
-<p><a href="https://github.com/akabe/ocaml-jupyter">akabe/ocaml-jupyter</a></p>
-<h3>How to use it in practice</h3>
-<hr />
-<ul>
-<li>
-<p>Getting started</p>
-<p>The best way to get <em>ocaml-juptyer</em> up and running is through <code>opam</code> and installing <code>jupyter</code> using <code>pip</code> the python package manager. The basic installation process once you are passed the hurdles of getting <code>pip</code> and <code>opam</code> installed are:</p>
+<h3>Getting started</h3>
+<p>The best way to get <em>ocaml-juptyer</em> up and running is through <code>opam</code> and installing <code>jupyter</code> using <code>pip</code> the python package manager. You can install <code>pip</code> on your machine by following these guides.</p>
+<p>The basic installation process once you are passed the hurdles of getting <code>pip</code> and <code>opam</code> installed are:</p>
 <pre><code class="language-bash">$ pip install jupyter
 $ opam install jupyter
 $ opam install jupyter-archimedes  # Jupyter-friendly 2D plotting library
 $ ocaml-jupyter-opam-genspec
 $ jupyter kernelspec install [ --user ] --name ocaml-jupyter &quot;$(opam var share)/jupyter&quot;
 </code></pre>
-</li>
-<li>
-<p>Getting started (Docker)</p>
+<h3>Getting started (Docker)</h3>
 <p>Using the link below, a jupyter notebook can be created inside a docker container and connected t a port so users can begin coding fairly quickly. This involves a second level of indirection in installing docker.</p>
 <ul>
 <li><em>Limitations - the dockerfiles exposed here are very data-science oriented (i.e. large images with many preinstalled packages) and only go up to OCaml 4.07.</em>
@@ -60,14 +53,10 @@ $ jupyter kernelspec install [ --user ] --name ocaml-jupyter &quot;$(opam var sh
 # Go to http://localhost:8888/?token=&lt;token&gt;
 </code></pre>
 <p><a href="https://github.com/akabe/docker-ocaml-jupyter-datascience">akabe/docker-ocaml-jupyter-datascience</a></p>
-</li>
-<li>
-<p>Presentation tools</p>
+<h3>Presentation tools</h3>
 <p>For teachers or presenters you can use the RISE tool to present your code and text in the browser from a running OCaml Jupyer Notebook.</p>
 <p><a href="https://rise.readthedocs.io/en/stable/">RISE 5.6.1</a></p>
-</li>
-</ul>
-<h3>Real World Examples</h3>
+<h2>Real World Examples</h2>
 <hr />
 <p><a href="https://kcsrk.info/ocaml/prolog/jupyter/notebooks/2020/01/19/OCaml-Prolog-Jupyter/"></a></p>
 
