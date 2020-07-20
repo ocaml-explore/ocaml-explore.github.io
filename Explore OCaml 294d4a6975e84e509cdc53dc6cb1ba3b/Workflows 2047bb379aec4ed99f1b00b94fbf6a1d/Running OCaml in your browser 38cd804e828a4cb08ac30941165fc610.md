@@ -16,21 +16,29 @@ OCaml byte-code can be compiled to Javascript to run in your browser using the `
 
 ---
 
-### js_of_ocaml
+### Js_of_ocaml
 
-Dune has built-in support for compiling byte-code to JS. Consider a "hello-world" example: 
+Dune has built-in support for compiling byte-code to Javascript. Consider a "hello-world" example: 
 
 ```ocaml
 (* main.ml *)
 let () = print_endline "Hello World"
 ```
 
-This can be built with `dune build`, with the `js_of_ocaml` package installed (to get the compiler) and the following dune file: 
+This can be built with `dune build`, provided the `js_of_ocaml` package is installed (to get the cross-compiler) and the following dune file: 
 
 ```
 (executable
  (name main)
  (modes js))
+```
+
+This will output your main file into a Javascript file called `main.bc.js`. To get this running in your browser you can then create an `index.html` file in the same `_build/default` folder and include the JS file in a script tag: `<script src="main.bc.js></script>`. This is the quickest way to get started. 
+
+Although Javascript has many features in common with functional-styled programming, it primarily works using objects and mutable data. To make the transition from OCaml to Javascript easier, there is a [PPX](https://ocsigen.org/js_of_ocaml/3.1.0/manual/ppx) to make objects using the OCaml syntax. Once installed, you can make objects fairly simply.
+
+```bash
+
 ```
 
 ## Alternatives
