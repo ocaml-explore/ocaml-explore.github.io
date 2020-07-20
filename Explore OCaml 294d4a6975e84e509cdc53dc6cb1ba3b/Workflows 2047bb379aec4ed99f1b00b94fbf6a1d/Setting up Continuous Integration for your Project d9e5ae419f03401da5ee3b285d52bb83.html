@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <title>
-   Setting up Continuous Integration for your Project
-   d9e5ae419f03401da5ee3b285d52bb83
-  </title>
+ <head><title>Setting up Continuous Integration for your Project</title>
   <link rel="stylesheet"
    href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
    />
@@ -29,12 +25,13 @@
    <div style="max-width: 800px">
                                            
     <h1>Setting up Continuous Integration for your Project</h1>
-<p>Platform: ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/mdx%20e991b555d626476589b92fe48094ed44.md, ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/bun%2078ac8d6aa4b343b9a6658c4d2ec7a757.md
-REMOVE ME: Drafted: Yes
-Related Workflows: Adding%20units%20tests%20to%20your%20project%20a53ff6e7d3914ff89fad69fa603a309a.md, Keeping%20your%20code%20clean%207443e9c915104226840b1e0a19cd9cd8.md
-Short Description: Add CI to your project using Github Actions
-Users: ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Library%20Authors%2033d664dd3a4d487a9f707092c9bd4b6b.md, ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Application%20Developers%205158b951046948ae8080c5faae4c5485.md</p>
-<h2>Overview</h2>
+<details><summary>Platform</summary>
+    
+    <ul><li><a href="../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/mdx%20e991b555d626476589b92fe48094ed44.html">mdx</a></li><li><a href="../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/bun%2078ac8d6aa4b343b9a6658c4d2ec7a757.html">bun</a></li></ul>
+  </details><details><summary>Related Workflows</summary>
+    
+    <ul><li><a href="Adding%20units%20tests%20to%20your%20project%20a53ff6e7d3914ff89fad69fa603a309a.html"> Adding units tests to your project</a></li><li><a href="Keeping%20your%20code%20clean%207443e9c915104226840b1e0a19cd9cd8.html"> Keeping your code clean</a></li></ul>
+  </details><h2>Overview</h2>
 <hr />
 <p>Continuous integration (CI) has become a basic necessity for managing projects, especially when there are multiple contributors. The idea is that for code to make it into production (or to get a &quot;seal of approval&quot; to move to the main branch) - code should pass a series of quality tests.</p>
 <p>These tests may include:</p>
@@ -87,7 +84,7 @@ jobs:
 <p>Each is built around environment variables in order to execute different jobs with say different linux distributions, ocaml versions etc.</p>
 <h2>Real World Examples</h2>
 <hr />
-<p><a href="https://github.com/avsm/ocaml-yaml/blob/master/.github/workflows/test.html">avsm/ocaml-yaml</a></p>
+<p><a href="https://github.com/avsm/ocaml-yaml/blob/master/.github/workflows/test.yml">avsm/ocaml-yaml</a></p>
 
     
             
