@@ -17,37 +17,13 @@ let build dist_dir =
   let all = all_files dist_dir in
   let pages = List.filter (fun f -> Filename.extension f = ".md") all in
   let csvs = List.filter (fun f -> Filename.extension f = ".csv") all in
-  let alter_md_links page_path str =
-    try
-      (* Convert links to remote notion pages to local versions *)
-      if
-        Uri.host_with_default ~default:"not-notion" (Uri.of_string str)
-        = "www.notion.so"
-      then
-        let file = Core.List.last_exn (String.split_on_char '/' str) in
-        match
-          Core.List.find
-            ~f:(fun abso ->
-              String.(concat " " (split_on_char '-' file))
-              = Filename.(remove_extension (basename abso)))
-            pages
-        with
-        | Some path ->
-            Filename.remove_extension
-              (Paths.rel_diff (fst (Core.Filename.split page_path)) path)
-            ^ ".html"
-        | None -> str
-      else Filename.chop_extension str ^ ".html"
-    with Invalid_argument s ->
-      print_endline
-        ("Not changing url for: " ^ str ^ " because Invalid_argument to " ^ s);
-      str
-  in
   let _mds =
     List.iter
       (fun page ->
         Page.dump_html dist_dir
-          (Utils.change_url_omd (alter_md_links page))
+          (fun compose ->
+            Utils.change_and_extract_headers
+              Utils.(change_url_omd (alter_md_links pages page) compose))
           page)
       pages
   in

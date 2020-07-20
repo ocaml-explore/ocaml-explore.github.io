@@ -39,8 +39,47 @@ let notion_strip str =
   |> replace_all double_space
   |> truncate
 
+(* Changing markdown links in the code to html links whilst leaving others unchanged *)
+let alter_md_links pages page_path str =
+  try
+    (* Convert links to remote notion pages to local versions *)
+    if
+      String.equal
+        (Uri.host_with_default ~default:"not-notion" (Uri.of_string str))
+        "www.notion.so"
+    then
+      let file = List.last_exn (String.split ~on:'/' str) in
+      match
+        List.find
+          ~f:(fun abso ->
+            String.equal
+              String.(concat ~sep:" " (List.drop_last_exn (split ~on:'-' file)))
+              String.(
+                concat ~sep:" "
+                  (List.drop_last_exn
+                     (String.split ~on:' '
+                        Filename.(chop_extension (basename abso))))))
+          pages
+      with
+      | Some path ->
+          Filename.chop_extension
+            (Paths.rel_diff (fst (Core.Filename.split page_path)) path)
+          ^ ".html"
+      | None -> str
+    else
+      let scheme = Uri.(scheme (of_string str)) in
+      if
+        Option.equal String.equal scheme (Some "https")
+        || Option.equal String.equal scheme (Some "http")
+      then str
+      else Filename.chop_extension str ^ ".html"
+  with Invalid_argument s ->
+    print_endline
+      ("Not changing url for: " ^ str ^ " because Invalid_argument to " ^ s);
+    str
+
 (* Custom Omd AST Modifiers *)
-(* XXX: Most (all) of our links appear in paragraphs *)
+(* XXX: Most (all) of our links appear in paragraphs, some in "Concats" *)
 let change_url_omd f ast =
   let aux (b : Omd.block) =
     match b.bl_desc with
@@ -76,3 +115,76 @@ let change_url_omd f ast =
     | _ -> b
   in
   List.map ~f:aux ast
+
+let name_from_file file =
+  let separated = String.split ~on:' ' (Filename.basename file) in
+  String.(concat ~sep:" " (List.drop_last_exn separated))
+
+let title_from_file link =
+  let split = Re.Str.(split (regexp "%20") (Filename.basename link)) in
+  String.concat ~sep:" " (List.drop_last_exn split)
+
+(* Create a toggle list for properties of DB entries *)
+let gen_omd_list hd lst : Omd.block list =
+  let html_lst =
+    List.map
+      ~f:(fun link ->
+        ( Filename.chop_extension (String.strip ~drop:(Char.equal ' ') link)
+          ^ ".html",
+          title_from_file link ))
+      lst
+  in
+  [
+    {
+      bl_desc =
+        Omd.Html_block Html_gen.(elt_to_string (emit_toggle_list hd html_lst));
+      bl_attributes = [];
+    };
+  ]
+
+(* Some pages have headers with properties like related workflows
+   - this needs parsed and rendered nicely. *)
+let change_and_extract_headers ast =
+  let rec change_concat_lst = function
+    | [] -> []
+    | (x : Omd.inline) :: xs -> (
+        match x.il_desc with
+        | Omd.Text txt -> (
+            try
+              let prop_type = List.hd (String.split_on_chars ~on:[ ':' ] txt) in
+              match prop_type with
+              | Some str ->
+                  if
+                    List.mem
+                      [ "Related Workflows"; "Libraries"; "Platform" ]
+                      str ~equal:String.equal
+                  then
+                    match String.split_on_chars ~on:[ ':'; ',' ] txt with
+                    | _hd :: links ->
+                        gen_omd_list str links :: change_concat_lst xs
+                    | _ -> change_concat_lst xs
+                  else change_concat_lst xs
+              | None -> change_concat_lst xs
+            with Invalid_argument _ -> change_concat_lst xs)
+        | _ -> change_concat_lst xs)
+  in
+  let aux (b : Omd.block) =
+    match b.bl_desc with
+    | Omd.Paragraph inline -> (
+        match inline.il_desc with
+        | Omd.Concat lst -> (
+            match List.hd lst with
+            | Some omd -> (
+                match omd.il_desc with
+                | Omd.Text _txt -> (
+                    try
+                      match change_concat_lst lst with
+                      | [] -> [ b ]
+                      | lst -> Stdlib.List.flatten lst
+                    with Invalid_argument _ -> [ b ])
+                | _ -> [ b ])
+            | None -> [ b ])
+        | _ -> [ b ])
+    | _ -> [ b ]
+  in
+  Stdlib.List.flatten (List.map ~f:aux ast)

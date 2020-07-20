@@ -12,6 +12,15 @@ a:hover {
   text-decoration: underline;
 }
 
+summary {
+  font-size: 1.1em;
+  margin: 5% 0%;
+}
+
+h2, h3 {
+  margin-top: 5%;
+}
+
 .link {
   color: orange;
 }

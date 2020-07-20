@@ -5,10 +5,7 @@ and prop = [ `Text of string | `Number of float | `Relation of string * string ]
 let dump_html top_dir modifier abso =
   if Sys.file_exists (Utils.replace_spaces abso) then
     let filename = Utils.replace_spaces abso in
-    let title =
-      Core.(
-        List.last_exn (String.split ~on:'/' (Filename.chop_extension filename)))
-    in
+    let title = Utils.name_from_file abso in
     let file = Utils.read_file filename in
     let path =
       if List.length (String.split_on_char '/' filename) = 2 then

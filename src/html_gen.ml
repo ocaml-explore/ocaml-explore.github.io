@@ -28,6 +28,24 @@ let wrapper css_path title body =
   </html>
 |}]
 
+let emit_toggle_list title lst =
+  let to_link (link, name) =
+    [%html "<li><a href=" link ">" [ Html.txt name ] "</a></li>"]
+  in
+  [%html
+    {| 
+  <details>
+    <summary>|} [ Html.txt title ]
+      {|</summary>
+    <ul>
+      |} (List.map ~f:to_link lst)
+      {|
+    </ul>
+  </details>
+|}]
+
+let elt_to_string page = Format.asprintf "%a" (Html.pp_elt ()) page
+
 let emit_page filename html =
   let outc = Out_channel.create filename in
   let fmt = Format.formatter_of_out_channel outc in
