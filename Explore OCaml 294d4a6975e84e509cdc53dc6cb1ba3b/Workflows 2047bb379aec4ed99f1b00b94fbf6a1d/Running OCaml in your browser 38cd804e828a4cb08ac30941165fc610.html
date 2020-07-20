@@ -44,8 +44,17 @@ let () = print_endline &quot;Hello World&quot;
  (modes js))
 </code></pre>
 <p>This will output your main file into a Javascript file called <code>main.bc.js</code>. To get this running in your browser you can then create an <code>index.html</code> file in the same <code>_build/default</code> folder and include the JS file in a script tag: <code>&lt;script src=&quot;main.bc.js&gt;&lt;/script&gt;</code>. This is the quickest way to get started.</p>
-<p>Although Javascript has many features in common with functional-styled programming, it primarily works using objects and mutable data. To make the transition from OCaml to Javascript easier, there is a <a href="https://ocsigen.org/js_of_ocaml/3.1.0/manual/ppx">PPX</a> to make objects using the OCaml syntax. Once installed, you can make objects fairly simply.</p>
-<pre><code class="language-bash">
+<p>Although Javascript has many features in common with functional-styled programming, it primarily works using objects and mutable data. To make the transition from OCaml to Javascript easier, there is a <a href="https://ocsigen.org/js_of_ocaml/3.1.0/manual/ppx">PPX</a> to make objects using the OCaml syntax. Once installed, you can make objects fairly simply, make sure you add <code>(preprocess (pps js_of_ocaml-ppx))</code> to your dune file.</p>
+<pre><code class="language-ocaml">let () = 
+  let person = 
+    object%js (self)
+      val name = &quot;Alice&quot; [@@readwrite]
+      method set str = self##.name := str 
+      method get = self##.name
+    end in 
+  print_endline (person##get); (* Prints Alice *)
+  person##set &quot;Bob&quot;;
+  print_endline (person##get); (* Prints Bob *)
 </code></pre>
 <h2>Alternatives</h2>
 <hr />
