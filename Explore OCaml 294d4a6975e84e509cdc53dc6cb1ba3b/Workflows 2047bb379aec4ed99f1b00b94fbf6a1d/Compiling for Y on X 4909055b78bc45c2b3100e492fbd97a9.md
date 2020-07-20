@@ -12,7 +12,7 @@ Users: ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Application%20
 
 Cross-compiling in OCaml is still an experimental feature, but there are plans to make it a fully supported one in the future. 
 
-Cross-compiling allows a programmer on an *x86* machine to compile OCaml code to run on a *RISC-V* device*.* Usually the target architecture is the same as the architecture our machine is running on. **This is particularly useful for embedded devices running architectures like *ARM-32, ESP-32 or RISC-V*. 
+Cross-compiling allows a programmer on an *x86* machine to compile OCaml code to run on a *RISC-V* device. **Usually the target architecture is the same as the architecture our machine is running on. This is particularly useful for embedded devices running architectures like *ARM-32, ESP-32 or RISC-V*. 
 
 ## Recommended Workflow
 
