@@ -30,7 +30,7 @@ To get started you will need to create a `.github` directory in your repostory a
 
 One of the biggest advantages of Github Actions is the modularity and "action reuse". For example if you needed to use "curl" to get some resource from the internet or trigger some event at an endpoint [there's an action for that](https://github.com/marketplace/actions/github-action-for-curl).
 
-So what does a basic OCaml config file for making quality tests look like: 
+So what does a basic OCaml config file for making quality tests look like?
 
 ```yaml
 name: ospike

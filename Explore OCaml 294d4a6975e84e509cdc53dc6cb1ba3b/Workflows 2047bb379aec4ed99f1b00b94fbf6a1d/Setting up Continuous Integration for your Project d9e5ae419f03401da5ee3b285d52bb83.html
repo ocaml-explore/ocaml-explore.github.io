@@ -49,7 +49,7 @@
 <p>Github offers a feature called Github Actions. It works on the principle of <em>workflows -</em> different things you might want to do on different &quot;actions&quot; within your Github repository. This can include releasing code, testing code etc. Here we're focusing on testing.</p>
 <p>To get started you will need to create a <code>.github</code> directory in your repostory and inside it a <code>workflows</code> repository. Now you can specify what you want to happen by creating a <code>config.yml</code> file.</p>
 <p>One of the biggest advantages of Github Actions is the modularity and &quot;action reuse&quot;. For example if you needed to use &quot;curl&quot; to get some resource from the internet or trigger some event at an endpoint <a href="https://github.com/marketplace/actions/github-action-for-curl">there's an action for that</a>.</p>
-<p>So what does a basic OCaml config file for making quality tests look like:</p>
+<p>So what does a basic OCaml config file for making quality tests look like?</p>
 <pre><code class="language-yaml">name: ospike
 on: [push]
 jobs:
