@@ -33,6 +33,17 @@
 <p><a href="https://github.com/ocaml-ppx/ocamlformat">OCamlFormat</a> is a tool for applying formatting decisions to an OCaml project - it supports</p>
 <h2>Key Concepts</h2>
 <hr />
+<h3>Versioning</h3>
+<p>Like dune and opam, OCamlFormat uses versioning to ensure different installations of the tool don't mangle lots of code by accident when different versions are used. This is likely the only required property to set in the <code>.ocamlformat</code> file.</p>
+<p>It's important to note that OCamlFormat will not be able to change the formatting of syntactically incorrect code.</p>
+<h3>Options</h3>
+<p>The full, tuneable options list can be seen with <code>ocamlformat --help</code> but some of the more prevalent ones are:</p>
+<ul>
+<li><em>parse-docstring=true:</em>  this will ensure OCamlFormat
+</li>
+<li><em>break-infix</em>
+</li>
+</ul>
 <h2>In the Wild</h2>
 <hr />
 

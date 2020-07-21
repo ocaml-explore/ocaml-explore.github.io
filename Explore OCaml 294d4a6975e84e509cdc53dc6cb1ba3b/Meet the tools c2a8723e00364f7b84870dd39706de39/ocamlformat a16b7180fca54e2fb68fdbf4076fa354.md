@@ -14,6 +14,19 @@ Tags: editing
 
 ---
 
+### Versioning
+
+Like dune and opam, OCamlFormat uses versioning to ensure different installations of the tool don't mangle lots of code by accident when different versions are used. This is likely the only required property to set in the `.ocamlformat` file. 
+
+It's important to note that OCamlFormat will not be able to change the formatting of syntactically incorrect code.
+
+### Options
+
+The full, tuneable options list can be seen with `ocamlformat --help` but some of the more prevalent ones are: 
+
+- *parse-docstring=true:*  this will ensure OCamlFormat
+- *break-infix*
+
 ## In the Wild
 
 ---
