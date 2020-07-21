@@ -27,8 +27,10 @@ let foo () =
 
 ### Syntax Extensions
 
-Ocp-indent comes with useful extensions for the OCaml language - in particular you can use the *mll* extension for 
+Ocp-indent comes with useful extensions for the OCaml language - in particular you can use the *mll* extension for indenting the lexing file format.
 
 ## In the Wild
 
 ---
+
+Ocp-indent is used in the [OCaml compiler repository](https://github.com/ocaml/ocaml/blob/trunk/.ocp-indent).

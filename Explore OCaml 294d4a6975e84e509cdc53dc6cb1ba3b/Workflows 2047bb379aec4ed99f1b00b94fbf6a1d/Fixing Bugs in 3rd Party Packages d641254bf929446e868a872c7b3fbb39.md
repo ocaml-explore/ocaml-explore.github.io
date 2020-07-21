@@ -32,8 +32,6 @@ Quite a lot of this workflow is made simpler by using the opam client.
 
 ---
 
-Note: the recommend workflow assumes all of the code including third party packages is being built with dune. For non-dune projects see the *alternative workflow*.
-
 ### Getting the Source Code
 
 If the library is part of the *opam-repository* then the easiest way to get the source code is using the opam client: `opam source <package>` - this can also be given an optional version constraint.

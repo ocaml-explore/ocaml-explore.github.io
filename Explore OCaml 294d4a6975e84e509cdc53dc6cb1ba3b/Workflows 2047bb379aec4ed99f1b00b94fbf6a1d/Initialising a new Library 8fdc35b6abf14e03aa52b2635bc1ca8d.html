@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>Initialising a new Library</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Initialising a new Library</h1>
+<details><summary>Platform</summary>
+    
+    <ul><li><a href="../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/dune%207063fd3c0d5d4074b7a5c0d97933149c.html">dune</a></li></ul>
+  </details><h2>Overview</h2>
+<hr />
+<p>Getting started with a project should be simple - ideally a single command would initialise some kind of wizard to guide you through setting a project up. Much like the <code>npm init</code> command which takes answers to populate the <code>package.json</code> file.</p>
+<p>This is important because it is very easy to make mistakes in setting up a repository for a new project and the ideal workflow for a library author would to start writing code almost immediately.</p>
+<h2>Recommended Workflow</h2>
+<hr />
+<p>Dune is the best tool for doing something like this (although AFAIK there's no out-of-the-box support for initialising this with opam integration).</p>
+<p>Dune Terminology:</p>
+<p><a href="https://dune.readthedocs.io/en/stable/overview.html?highlight=%22installed%20world%22#terminology">Overview - dune documentation</a></p>
+<p>The key ones include:</p>
+<ul>
+<li><strong>package</strong> - a package is a set of libraries, executables, … that are built and installed as one by opam.
+</li>
+<li><strong>project</strong> - a project is a source tree, maybe containing one or more packages
+</li>
+<li><strong>workspace</strong> - the workspace is the subtree starting from the root. It can contain any number of projects that will be built simultaneously by dune.
+</li>
+</ul>
+<p>From the documentation:</p>
+<blockquote>
+<p><code>dune init</code> can be used to quickly add new projects, libraries, tests, or executables without having to manually create dune files, or it can be composed to programmatically generate parts of a multi-component project.</p>
+</blockquote>
+<hr />
+<p>All in all I think the terminoloygy and documentation is a little confusing for the following reasons:</p>
+<ol>
+<li>
+<p>The terms are all quite overloaded and finding the terminology page on the <em>readthedocs</em> page is not easy... for instance &quot;I want to build a new OCaml project&quot; <code>===</code> &quot;I want to build <em>a source tree containing one or more packages which can be built and installed as one by opam&quot;</em>?</p>
+<p><a href="https://dune.readthedocs.io/en/stable/">Welcome to dune's documentation! - dune documentation</a></p>
+</li>
+<li>
+<p>From the definition of <strong>package and then reference in project</strong> it feels like there is a very tight coulpling between opam and dune. Whilst there is a good integration I believe the two are flexible enought to use separately, and powerful when combined.</p>
+</li>
+</ol>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

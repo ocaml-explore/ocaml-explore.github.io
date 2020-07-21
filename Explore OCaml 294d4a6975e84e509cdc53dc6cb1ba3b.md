@@ -66,9 +66,9 @@ To get started with workflows, open the user that best describes you and start e
 
 ---
 
-The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life. 
+The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life. You can see how the platform progress in [2017](https://www.youtube.com/watch?v=y-1Zrzdd9KM), [2018](https://www.youtube.com/watch?v=oyeKLAYPmQQ) and [2019](https://speakerdeck.com/avsm/workflows-in-the-ocaml-platform). 
 
-There is no requirement to use all of the tools. You can mix and match different combinations to suit the needs of your project.  
+There is no requirement to use all of the tools. You can mix and match different combinations to suit the needs of your project and the workflows you want to accomplish.  
 
 [Meet the tools](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39.csv)
 
