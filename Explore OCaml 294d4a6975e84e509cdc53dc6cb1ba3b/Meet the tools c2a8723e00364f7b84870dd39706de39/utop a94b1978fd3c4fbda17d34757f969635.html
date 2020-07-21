@@ -30,10 +30,42 @@
     <ul><li><a href="../Workflows%202047bb379aec4ed99f1b00b94fbf6a1d/Getting%20Started%20acd4b96e9a20433d933b940d65f60423.html">Getting Started</a></li></ul>
   </details><h2>Overview</h2>
 <hr />
-<h3>Key Concepts</h3>
+<p><a href="https://github.com/ocaml-community/utop">Utop</a> is the <em>universal top-level</em> for OCaml. It is essentially a <em>read-evaluate-print</em> loop which makes it great for prototyping functions, learning OCaml and checking type signatures. It can be installed using opam with <code>opam install utop</code>.</p>
+<h2>Key Concepts</h2>
 <hr />
-<h3>In the Wild</h3>
-<hr />
+<p>Utop is much more than just a learning tool - it can help any OCaml programmer discover type signatures and prototype new ideas quickly without having to build a full program. Some of the most useful directives are:</p>
+<pre><code>(* load external packages *)
+utop # #require &quot;omd&quot; 
+
+(* load source files providing dependent packages are loaded *)
+utop # #use &quot;src/utils.ml&quot; 
+</code></pre>
+<p>With packages loaded into the toplevel we can explore them to help speed up are development process when using them, for example if we wished to know what all of the exposed functions and types are for the <code>Omd</code> module we can run <code>#show omd</code> . For specific functions we can just print them.</p>
+<pre><code>(* load omd *)
+utop # #require &quot;omd&quot;
+
+(* see type signature of the of_channel function *)
+utop # Omd.of_channel;;
+- : in_channel -&gt; Omd.doc = &lt;fun&gt;
+
+(* see what the doc type aliases *)
+utop # #show Omd.doc;; 
+- : type nonrec doc = Omd.block list
+</code></pre>
+<p>This process is much faster and smoother than checking the online documentation or the source code. It also prints the return types of functions which is especially useful when you move beyond the primitive types like <code>float</code> and <code>int</code>.</p>
+<pre><code>(* see what the doc type aliases *)
+utop # Omd.of_string &quot;[OCaml](https://ocaml.org/)&quot;
+- : Omd.doc =
+[{Omd.bl_desc =
+   Omd.Paragraph
+    {Omd.il_desc =
+      Omd.Link
+       {Omd.label = {Omd.il_desc = Omd.Text &quot;OCaml&quot;; il_attributes = []};
+        destination = &quot;https://ocaml.org/&quot;; title = None};
+     il_attributes = []};
+  bl_attributes = []}]
+</code></pre>
+<p>This can help you make sure functions return the types you expect instead of having to find the pretty printer and add print statements over parts of your code you want to inspect.</p>
 
     
             
