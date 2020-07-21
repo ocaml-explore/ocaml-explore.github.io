@@ -8,10 +8,12 @@ Tags: editing
 
 ---
 
-### Key Concepts
+[OCamlFormat](https://github.com/ocaml-ppx/ocamlformat) is a tool for applying formatting decisions to an OCaml project - it supports 
+
+## Key Concepts
 
 ---
 
-### In the Wild
+## In the Wild
 
 ---

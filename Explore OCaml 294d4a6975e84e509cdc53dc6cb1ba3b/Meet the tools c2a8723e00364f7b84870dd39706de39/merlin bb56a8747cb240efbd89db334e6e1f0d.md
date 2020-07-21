@@ -9,14 +9,8 @@ Tags: editing
 
 ---
 
-> Context sensitive completion for OCaml in Vim and Emacs
+[Merlin](https://github.com/ocaml/merlin) is a tool for providing IDE features for OCaml with support for Vim and Emacs. The *related workflows* links to more useful advice for setting up in those two environments. 
 
-[ocaml/merlin](https://github.com/ocaml/merlin)
-
-### Key Concepts
-
----
-
-### In the Wild
+## Key Concepts
 
 ---
