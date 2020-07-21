@@ -62,11 +62,17 @@ To get started with workflows, open the user that best describes you and start e
 
 [Archetypical Users](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff.csv)
 
-The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. Different tools accomplish different workflows. 
+# The OCaml Platform 🔨
+
+---
+
+The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life. 
+
+There is no requirement to use all of the tools. You can mix and match different combinations to suit the needs of your project.  
 
 [Meet the tools](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39.csv)
 
-Community libraries are recommendations for additional tools to help create your OCaml projects - whilst not part of the platform, many of them have become common use and an understanding of how they work can help you form good decisions for your own project. 
+Community libraries are recommendations for additional tools and libraries to help create your OCaml projects. Whilst not part of the platform, many of them have become common use and an understanding of how they work can help you form good decisions for your own project. 
 
 [Community Libraries](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Community%20Libraries%207088de737dff4e97934677e854bc7de8.csv)
 
