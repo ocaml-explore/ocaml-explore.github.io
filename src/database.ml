@@ -37,7 +37,10 @@ let from_csv abso =
  * It is also possible to get clashes (dune and dune-release for dune) - take the shortest string to break ties *)
 let get_url _db name files =
   let re = Re.compile (Re.str ("/" ^ name)) in
-  let filter s = List.length (Re.matches re ("/" ^ Filename.basename s)) > 0 in
+  let filter s =
+    List.length (Re.matches re ("/" ^ Utils.notion_strip (Filename.basename s)))
+    > 0
+  in
   let possible_links = List.filter (fun s -> filter s) files in
   let rec get_smallest smallest sofar = function
     | [] -> smallest
