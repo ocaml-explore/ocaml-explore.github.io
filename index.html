@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>Explore OCaml</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Explore OCaml</h1>
+<p>One of the biggest problems programming languages face in a real world setting is that getting started with them isn't necessarily easy. OCaml is no exception. There tend to be lots of great resources explaining interesting aspects of the language like GADTs or the module system - but not as many centred around productivity workflows i.e. getting things done in OCaml.</p>
+<p>Often these workflows are obvious... once you know them. Explore OCaml is a centralised source for workflows in OCaml categorised by user, tools and libraries with rich linking to external sources of information.</p>
+<hr />
+<p>Here are some of the common problems users face:</p>
+<ol>
+<li>I'm running the <code>ABC</code> operating system, how do I get started with OCaml? (In particular the Windows experience).
+</li>
+<li>I want to build a library that does <code>X</code>, what is the best workflow* for achieving this?
+</li>
+<li>I just want to run some <em>Hello-World</em> examples and get started with OCaml - how do I do this? (similar to 1)
+</li>
+<li>I've noticed a bug in library <code>Y</code> - how do I fix it and contribute to the original library?
+</li>
+<li>OCaml seems to have many backends - <em>x86, ARM, RISC-V, JavaScript</em> - but how do I use them?
+</li>
+<li>There is a cool tool written in OCaml - how do I install and use it?
+</li>
+<li>I'm running on OS <code>ABC</code> but want to compile for <code>XYZ</code> - can I do that in OCaml?
+</li>
+</ol>
+<p>*<em>workflow: this involves testing, publishing, formatting, building etc. all of the common tooling that needs to be in place to allow most programming languages to solve real world problems.</em></p>
+<p>This site aims to answer these questions for you, as well as let you discover more advanced workflows as your use of OCaml grows. First, we'll introduce the only essential tool you need — opam.</p>
+<h1>Opam</h1>
+<hr />
+<p><a href="https://opam.ocaml.org/">Opam</a> is the the OCaml package manager.  In order to join the OCaml open source community, all you need to do is to add an <a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/opam%20files%20e6fb594018134e3d991e4fccf83abd41.html">opam file</a> to your project.  This <code>opam</code> file describes the build instructions for your project, as well as any dependencies it might need. An <code>opam</code> file is useful for a project of any size — from toy learning exercises to big theorem provers — since it allows someone else to easily rebuild and replicate your work, and even extend it if they choose to.</p>
+<p>Once you are comfortable with your code and want to share it more publicly, an opam file can be published to the central OCaml <a href="https://github.com/ocaml/opam-repository/">opam repository</a>.  This is a collection of tens of thousands of packages that have been contributed freely by the community since 2013.  The opam-repository does not contain the full source code to your project; instead, it tracks pointers to different versions of your code, and also the various compatibility constraints to automatically figure out which versions work with each other.  The usual mechanism to track your releases is to use a version control system such as git.  You can <a href="https://opam.ocaml.org">browse the packages</a> online to see what's available.</p>
+<p>How do you actually manipulate opam files?  There are several tools that can parse these files and repositories and install the software you want.  The primary reference implementation that runs on macOS and Linux is also the <a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/opam%20client%20af5eb8b02bdf4c17931004d79002243e.html">opam client</a> , and is the first thing you will want to configure on your system to get started.  Read on below for more details about opam files and the client.  If you'd like to just get on with a particular task, skip to the next section to find out which archetype you best fit into.</p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/opam%20files%20e6fb594018134e3d991e4fccf83abd41.html">opam files</a></p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/opam%20client%20af5eb8b02bdf4c17931004d79002243e.html">opam client</a></p>
+<h1>Workflows</h1>
+<hr />
+<p>Below are three lists: archetypical users, meet the tools and community libraries. All workflows have one or more users in mind with most using a tool from the OCaml Platform. The community libraries are popular projects which have become standard for certain workflows.</p>
+<p>To get started with workflows, open the user that best describes you and start exploring!</p>
+<h2>Learning the Language 📚</h2>
+<p><strong>Beginner:</strong> If you are just getting started on learning the OCaml language, there are several resources to get you going.  The <a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Beginner%207994c560f3ee4d2f98c13b14be0a8065.html">beginner</a> workflows will get you familiar with where you can find answers to common questions, find interactive playgrounds, and hook into possibly familiar learning mechanisms such as Jupyter notebooks.</p>
+<p><strong>Teachers:</strong> If you are teaching OCaml to a class, then you will need to support the installation of the tools on a variety of platforms, and hook into grading systems.  The <a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Teachers%209c24549abbc14de8be59002ea1bd42b3.html">teaching</a> workflows will cover that, and also link to projects that exist to support your efforts.</p>
+<h2>Developing in OCaml 🧠</h2>
+<p><strong>Application Developer:</strong> If you have found an OCaml application that you want to work on and extend, then read on about the <a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Application%20Developers%205158b951046948ae8080c5faae4c5485.html">Application Developer</a> workflows.  This will get you started with a build environment and all the dependencies you need to build the application within a modern IDE.</p>
+<p><strong>Library Author:</strong> If you want to break up your application into reusable chunks, then you will create OCaml libraries.  As a <a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Library%20Authors%2033d664dd3a4d487a9f707092c9bd4b6b.html">Library Author</a>, you will learn how to partition your source code into multiple libraries, to write unit tests and documentation, to apply auto-formatting, and eventually publish them publicly to the central opam repository.</p>
+<h2>Distributing OCaml code 🌏</h2>
+<p><strong>End User:</strong> If you are an <a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/End%20User%206cd8d2b414154ee4b1bf176b4bd0b83d.html">End User</a> that simply wants to install an OCaml application as fast as possible on your platform, read on about how to do that.  Beyond the standard opam client, there are also several domain-specific ones that may be more useful to you, such as the opam2nix binary distributor or the esy client that supports npm-like description files.</p>
+<p><strong>Distribution Manager:</strong> If you are maintaining OCaml on a particular operating system, you will be juggling the various quirks of OCaml applications and libraries with hundreds of other programming languages and build systems.  The <a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Distribution%20Manager%20bf0c4f1ec2534863920b4a06c463259b.html">Distribution Manager</a> workflows collect tools that operate over the opam repository metadata and provide mechanisms to programmatically translate them to your own distribution.</p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff.html">Archetypical Users</a></p>
+<h1>The OCaml Platform 🔨</h1>
+<hr />
+<p>The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life. You can see how the platform progress in <a href="https://www.youtube.com/watch?v=y-1Zrzdd9KM">2017</a>, <a href="https://www.youtube.com/watch?v=oyeKLAYPmQQ">2018</a> and <a href="https://speakerdeck.com/avsm/workflows-in-the-ocaml-platform">2019</a>.</p>
+<p>There is no requirement to use all of the tools. You can mix and match different combinations to suit the needs of your project and the workflows you want to accomplish.</p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39.html">Meet the tools</a></p>
+<p>Community libraries are recommendations for additional tools and libraries to help create your OCaml projects. Whilst not part of the platform, many of them have become common use and an understanding of how they work can help you form good decisions for your own project.</p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Community%20Libraries%207088de737dff4e97934677e854bc7de8.html">Community Libraries</a></p>
+<h3>Getting started on:</h3>
+<hr />
+<p>Brief guides on getting started on the three most common operating systems. There are a few <em>gotchas</em> to look out for and alternative ways of doing things with explanations as to what is going on. Start with <strong>common</strong> for a quick review of the problem we're trying to solve.</p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Common%20a4216fb9ab5342c792327110a27c802d.html">Common</a></p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/MacOS%202921e6dde3ae47ccb9a53341add68961.html">MacOS</a></p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Unix%20f49e1429fc054ade997e8b3e29cf5189.html">Unix</a></p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Windows%20e56df5482da84558981dfad34b6e591a.html">Windows</a></p>
+<h2>Notes &amp; Misc.</h2>
+<hr />
+<p>Understanding how these tools came to be requires and understanding of how the OCaml Ecosystem has evolved. This includes tools like <code>ocamlbuild</code>, <code>ocamlfind</code> and <code>jbuild</code>. Many sources of documentation and tutorials still reference some of these out-dated tools and some of the modern platform tools directly use them.</p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/OCaml%20Ecosystem%20History%20fbbea0e78ec04e3aa7040ceeed0d37dc.html">OCaml Ecosystem History</a></p>
+<p>The OCaml Platform is an idealised, one-stop-shop for all things OCaml. But it too has evolved over time and changed direction.</p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/OCaml%20Platform%2019249c71f305409da331d0b4e0a39b27.html">OCaml Platform </a></p>
+<h3>Main Workflows Database</h3>
+<hr />
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Workflows%202047bb379aec4ed99f1b00b94fbf6a1d.html">Workflows</a></p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Further%20Reading%20e586ad911323446196997e9cdc77d17f.html">Further Reading</a></p>
+<h3>Further Thoughts</h3>
+<hr />
+<p>I'm using this <em><strong>thoughts</strong></em> page for content that may eventually make its way to an FAQ of sorts. The idea is if you're confused whilst writing a workflow then you can document it in this page. Further reading contains additional resources that some workflows might reference for the sake of staying concise.</p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Brain-dump%20of%20Personal%20Challenges%20&amp;amp;%20Misconceptions%204d9678ea024c4513b2020d14f62e3437.html">Brain-dump of Personal Challenges &amp; Misconceptions </a></p>
+<p><a href="Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Thoughts%20whilst%20writing%20Workflows%208ade52f908514919a9397891b7233a67.html">Thoughts whilst writing Workflows </a></p>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

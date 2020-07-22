@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>Setting up useful OCaml tools for my editor</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Setting up useful OCaml tools for my editor?</h1>
+<details><summary>Platform</summary>
+    
+    <ul><li><a href="../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/Visual%20Studio%20Code%2014e32d99506e4f42a462bed0a706187b.html">Visual Studio Code</a></li><li><a href="../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/merlin%20bb56a8747cb240efbd89db334e6e1f0d.html">merlin</a></li></ul>
+  </details><details><summary>Related Workflows</summary>
+    
+    <ul><li><a href="Keeping%20your%20code%20clean%207443e9c915104226840b1e0a19cd9cd8.html"> Keeping your code clean</a></li></ul>
+  </details><h2>Overview</h2>
+<hr />
+<p>Having a helpful development environment can boost productivity and help catch errors early. OCaml has a powerful type system which reduces runtime errors, with a good editor setup you'll be able to catch them before you run <code>dune build</code>.</p>
+<h2>Recommended Workflow</h2>
+<hr />
+<p>The recommended editor for OCaml is <strong>Visual Studio Code</strong> - an editor with a rich ecosystem of useful plugins, themes and developer tools.</p>
+<p>To get the best setup, there is a marketplace plugin and an opam package that must be installed.</p>
+<pre><code class="language-bash"># This is the language server protocol for OCaml
+opam install ocaml-lsp-server
+
+# Install the OCaml Platform on VS Code Marketplace 
+</code></pre>
+<p>From here make sure to add a <code>workplace</code> to VS Code for your project. And watch out for the following errors:</p>
+<ul>
+<li>VS Code might complain about not being able to find <code>ocaml-lsp</code> - this is done on a per switch basis and clicking on the dialog box should let you pick the switch you installed it on.
+</li>
+</ul>
+<h2>Alternatives</h2>
+<hr />
+<h3>VS Code</h3>
+<p>Other extensions exist which offer support for OCaml and Reason including:</p>
+<p><a href="https://github.com/hackwaly/vscode-ocaml">hackwaly/vscode-ocaml</a></p>
+<p><a href="https://github.com/reasonml-editor/vscode-reasonml">reasonml-editor/vscode-reasonml</a></p>
+<h3>Vim</h3>
+<p>The to use with vim is merlin. OCaml LSP is the next generation of merlin, but for vim you will need merlin installed. There is also a useful opam plugin for getting up and running with the merlin features:</p>
+<pre><code class="language-bash">opam install merlin ocp-indent 
+opam user-setup install 
+</code></pre>
+<p>To get code completion you will need to enable omnipresent in your <code>.vimrc</code> file:</p>
+<pre><code>filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+</code></pre>
+<p>Then whilst in <code>INSERT</code> mode type <code>ctrl+c ctrl+o</code> to see completions for something like <code>List.m</code>.</p>
+<p>For syntax errors you need to add <em>syntastic</em> as a vim plugin. For this you'll need a vim plugin manager like pathogen. The <a href="https://github.com/vim-syntastic/syntastic">syntastic documentation</a> will let you get started and then add the following to your <code>.vimrc</code> file.</p>
+<pre><code>execute pathogen#infect()
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_ocaml_checkers = ['merlin']
+</code></pre>
+<p>For more features and information be sure to read the wiki on merlin linked in the resources.</p>
+<h3>Emacs</h3>
+<p>The workflow for emacs is very similar to vim.</p>
+<pre><code class="language-bash">opam install merlin ocp-indent 
+opam user-setup install 
+</code></pre>
+<p>After that the documentation in &quot;Emacs from Scratch&quot; linked in the resources tag will guide you through setting up OCaml with emacs.</p>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

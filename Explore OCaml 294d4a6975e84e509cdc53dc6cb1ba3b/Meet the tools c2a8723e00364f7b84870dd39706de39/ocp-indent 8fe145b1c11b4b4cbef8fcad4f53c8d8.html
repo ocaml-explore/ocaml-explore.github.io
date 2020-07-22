@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>ocp-indent</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>ocp-indent</h1>
+<details><summary>Related Workflows</summary>
+    
+    <ul><li><a href="../Workflows%202047bb379aec4ed99f1b00b94fbf6a1d/Keeping%20your%20code%20clean%207443e9c915104226840b1e0a19cd9cd8.html">Keeping your code clean</a></li></ul>
+  </details><h2>Overview</h2>
+<hr />
+<p><a href="https://github.com/OCamlPro/ocp-indent">Ocp-indent</a> is an indentation tool for OCaml. Unlike Python, the level of indentation will not change the semantics of your OCaml program, but it will make it more or less readable.  For complete styling you should use OCamlFormat and for indentation, Ocp-indent.</p>
+<h2>Key Concepts</h2>
+<hr />
+<h3>Tuneable Parameters</h3>
+<p>The complete set of tuneable parameters are quite nicely given in the <code>.ocp-indent</code> file for <a href="https://github.com/OCamlPro/ocp-indent/blob/master/.ocp-indent">Ocp-indent itself</a>. The simplest is the <em>base</em> parameter which will make sure code is indented in a standard way</p>
+<pre><code>(* base = 2 *)
+let foo () = 
+^^bar ....
+</code></pre>
+<h3>Syntax Extensions</h3>
+<p>Ocp-indent comes with useful extensions for the OCaml language - in particular you can use the <em>mll</em> extension for indenting the lexing file format.</p>
+<h2>In the Wild</h2>
+<hr />
+<p>Ocp-indent is used in the <a href="https://github.com/ocaml/ocaml/blob/trunk/.ocp-indent">OCaml compiler repository</a>.</p>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

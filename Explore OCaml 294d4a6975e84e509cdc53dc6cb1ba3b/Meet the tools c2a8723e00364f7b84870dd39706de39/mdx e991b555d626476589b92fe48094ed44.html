@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>mdx</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>mdx</h1>
+<details><summary>Related Workflows</summary>
+    
+    <ul><li><a href="../Workflows%202047bb379aec4ed99f1b00b94fbf6a1d/Setting%20up%20Continuous%20Integration%20for%20your%20Project%20d9e5ae419f03401da5ee3b285d52bb83.html">Setting up Continuous Integration for your Project</a></li><li><a href="../Workflows%202047bb379aec4ed99f1b00b94fbf6a1d/Documenting%20your%20project%205264337e86fa4889be1846e869f870a6.html">Documenting your project</a></li></ul>
+  </details><h2>Overview</h2>
+<hr />
+<p><a href="https://github.com/realworldocaml/mdx">Mdx</a> is a tool for executing code blocks inside of markdown. It can be used to improve documentation workflows and write tests. Documentation struggles from becoming out-dated fairly quickly or just being incorrect given it is usually typed by a programmer into something like markdown.</p>
+<h2>Key Concepts</h2>
+<hr />
+<h3>Dune Integration</h3>
+<p><a href="https://dune.readthedocs.io/en/stable/dune-files.html#mdx-since-2-4">Mdx</a> plays nicely (although still somewhat experimentally with dune). Mdx stanzas can specify the core parts to getting Mdx working with a library:</p>
+<ul>
+<li><code>files</code> - specify which files mdx should check for you
+</li>
+<li><code>packages</code> - detail the dependencies your code blocks have
+</li>
+<li><code>preludes</code> - files to run before anything else, useful for automatically opening packages like <code>Core</code>
+</li>
+</ul>
+<h2>In the Wild</h2>
+<hr />
+<p>The excellent book for learning OCaml, <a href="https://github.com/realworldocaml/book">Real World OCaml,</a> uses mdx extensively to automate their book and ensure the code snippets included within it are correct. Code is written in an <em>examples</em> directory and mdx keeps the examples and embedded code blocks in the content of the book synchronised.</p>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

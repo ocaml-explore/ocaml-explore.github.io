@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>Checking code coverage</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Checking code coverage</h1>
+<details><summary>Libraries</summary>
+    
+    <ul><li><a href="../Community%20Libraries%207088de737dff4e97934677e854bc7de8/bisect%2057731217c9134fefbdb3a8548fde2496.html">bisect</a></li></ul>
+  </details><details><summary>Platform</summary>
+    
+    <ul><li><a href="../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/dune%207063fd3c0d5d4074b7a5c0d97933149c.html">dune</a></li></ul>
+  </details><details><summary>Related Workflows</summary>
+    
+    <ul><li><a href="Adding%20tests%20to%20your%20project%20a53ff6e7d3914ff89fad69fa603a309a.html"> Adding tests to your project</a></li></ul>
+  </details><h2>Overview</h2>
+<hr />
+<p>Code coverage can be a good indicator into how well your code does what it is supposed to do. Of course, the goal is not to blindly chase 100% coverage, but to use the output to help you write correct and maintainable code.</p>
+<h2>Recommended Workflow</h2>
+<hr />
+<p>Setting up code coverage requires changes to your <code>dune</code> file for the libraries you want to cover. You will also need to update your opam file to depend on <code>ppx_bisect</code>. The opam file will add <code>bisec_ppx</code> as a dependency:</p>
+<pre><code>depends: [
+	...
+  &quot;bisect_ppx&quot; {dev &amp; &gt;= &quot;2.0.0&quot;}
+] 
+</code></pre>
+<p>And in the a library we want to cover, say a library called <code>numberz</code> we need to add a preprocessor.</p>
+<pre><code>(library
+ (name numberz)
+ (public_name numberz)
+ (preprocess (pps bisect_ppx --conditional)))
+</code></pre>
+<p>To run the tests with bisect enabled and to get the summary of the coverage you can run:</p>
+<pre><code class="language-bash"># This will produce the bisect results 
+BISECT_ENABLE=yes dune runtest --force
+
+# Tells you in the terminal 
+bisect-ppx-report summary
+
+# Produces coverage in _coverage directory
+bisect-ppx-report html
+</code></pre>
+<h2>Real World Examples</h2>
+<hr />
+<p><a href="https://github.com/arenadotio/ocaml-mssql">arenadotio/ocaml-mssql</a></p>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>
