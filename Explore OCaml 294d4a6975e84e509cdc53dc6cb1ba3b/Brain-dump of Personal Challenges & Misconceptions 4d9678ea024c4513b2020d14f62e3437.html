@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>Brain-dump of Personal Challenges &amp; Misconceptions</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Brain-dump of Personal Challenges &amp; Misconceptions</h1>
+<p>Probably the most confusing for me (and I would assume quite a few beginners) was the question of...</p>
+<ul>
+<li>What came first, opam, the ocaml compiler or dune?!
+<ul>
+<li>Right at the beginning I found this quite confusing for the following reasons:
+<ol>
+<li>OCaml is written in OCaml to compile OCaml code - the classic bootstrapping compiler problem!
+</li>
+<li>I can install the OCaml compiler with opam... but opam is written in OCaml!
+</li>
+<li>Dune is also written in OCaml, and opam is built with dune, but opam installs dune?!!
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3>OCaml Compiler</h3>
+<hr />
+<ul>
+<li>The compiler is <a href="https://ocaml.org/docs/install.html#OPAM">recommended to be installed using opam</a> - however you are immediately confronted with creating switches (see <strong>opam</strong> below for that challenge). In addition to this is having the following in opam which (from an outsiders perspective) can be very confusing:
+<ol>
+<li><code>ocaml-base-compiler</code>: official release built from the source in opam
+</li>
+<li><code>ocaml-variants</code>: differently configured versions of the OCaml compiler for example <code>4.09.1+musl+static+flambda</code> is the 4.09.1 version of the standard OCaml compiler that is compiled with <a href="https://musl.libc.org/">musl libc</a> that statically compiles code (not dynamically) and has the flambda optimisation in the compiler pipeline.
+</li>
+<li><code>ocaml-system</code>: this uses the OCaml installed by the OS package manager for example <code>brew</code> on MacOS.
+</li>
+<li><code>ocaml</code>: a <em>virtual package</em> which is what most libraries will depend on if they need the OCaml compiler.
+</li>
+</ol>
+</li>
+</ul>
+<h3>opam</h3>
+<hr />
+<ul>
+<li>Switches are defined as &quot;<em>independent installation prefixes with their own compiler and sets of installed and pinned packages</em>&quot; which is a lot to take in considering it's the first thing you encournter via the link above to install OCaml. <em>What is an installation prefix, what does it mean for a package to be installed vs. pinned?</em>
+</li>
+<li>Pinning is an interesting concept coming from a <a href="https://medium.com/@the1mills/how-to-test-your-npm-module-without-publishing-it-every-5-minutes-1c4cb4b369be">JS/NPM world</a> (maybe the most well-known package manager + PL ecosystem?) where you have the idea of <strong>linking</strong> or <strong>locally installing</strong>. Again the usefulness of opam for recompiling packages which depend on your changed packaged is v. useful.  (Personal experience of building a MirageOS unikernel and tracking down an <code>ocaml-git</code> bug when using Irmin)
+</li>
+<li>Repositories are also a slightly foreign concept - for most users the default will suffice but if you are cross-compiling for example then you need to build your own and so there is a disconnect (imo) for these users between how opam actually works vs. the out-of-the-box &quot;magic&quot; that others can take for granted.
+</li>
+<li>I think there are a lot of useful workflows or combinations of commands that are regularly used but not really documented anywhere especially through a great RW example, for instance:
+<ul>
+<li>
+<p><code>opam show &lt;package&gt; (--raw)</code> is especially useful for whenever I was cross-compiling and adding</p>
+</li>
+<li>
+<p>Another simple worlfow for starting with development easily is the following (originially I was cloning from Github, building the source and then installing when I never even had to leave the terminal!):</p>
+<pre><code class="language-bash">opam source &lt;package-xyz&gt;
+cd ./&lt;package-xyz&gt; 
+# [edit, fix etc.]
+opam pin add &lt;package-xyz&gt; --kind=path 
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3>dune</h3>
+<hr />
+<ul>
+<li><strong>Compositional builds</strong> is definitely confusing coming from a JS/NPM world - in the first instance it feels like dune is doing too much without being asked - what solidifed this idea for me was building a project with a usable library (<code>/lib</code>), an executable which makes use of that library (<code>/bin</code>) and testing (<code>/test</code>). With a simple project like this you then get a good feel with how the build process works depending on where you initiate <code>dune build</code> from.
+</li>
+<li><strong>Cross-compilation</strong> perhaps a little niche but the support for cross-compilation is actually <strong>very good but again <em>&quot;once you know it is easy&quot;!</em></strong> This links in a lot with how opam works and more &quot;advanced&quot; uses of dune workspaces and files.
+</li>
+</ul>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>

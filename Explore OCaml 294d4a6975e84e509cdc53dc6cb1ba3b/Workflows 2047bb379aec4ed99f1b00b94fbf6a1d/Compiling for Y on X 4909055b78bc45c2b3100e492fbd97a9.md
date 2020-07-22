@@ -2,7 +2,7 @@
 
 Platform: ../Meet%20the%20tools%20c2a8723e00364f7b84870dd39706de39/dune%207063fd3c0d5d4074b7a5c0d97933149c.md
 REMOVE ME: Drafted: Yes
-Resources: ../Further%20Reading%20e586ad911323446196997e9cdc77d17f/OCaml%20on%20Baremetal%20Shakti%20RISC%20V%20Processor%20c88def6eb57b47699d0b4415b0711207.md
+Resources: ../Further%20Reading%20e586ad911323446196997e9cdc77d17f/OCaml%20on%20Baremetal%20Shakti%20RISC-V%20Processor%20c88def6eb57b47699d0b4415b0711207.md
 Short Description: Compile code to run on different architectures
 Users: ../Archetypical%20Users%20e3ac9b12886f4eb382d8d03da27ab6ff/Application%20Developers%205158b951046948ae8080c5faae4c5485.md
 

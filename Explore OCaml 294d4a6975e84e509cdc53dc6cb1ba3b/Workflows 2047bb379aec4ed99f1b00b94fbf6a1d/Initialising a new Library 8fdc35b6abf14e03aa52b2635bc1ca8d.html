@@ -34,33 +34,33 @@
 <p>This is important because it is very easy to make mistakes in setting up a repository for a new project and the ideal workflow for a library author would to start writing code almost immediately.</p>
 <h2>Recommended Workflow</h2>
 <hr />
-<p>Dune is the best tool for doing something like this (although AFAIK there's no out-of-the-box support for initialising this with opam integration).</p>
-<p>Dune Terminology:</p>
-<p><a href="https://dune.readthedocs.io/en/stable/overview.html?highlight=%22installed%20world%22#terminology">Overview - dune documentation</a></p>
-<p>The key ones include:</p>
-<ul>
-<li><strong>package</strong> - a package is a set of libraries, executables, … that are built and installed as one by opam.
-</li>
-<li><strong>project</strong> - a project is a source tree, maybe containing one or more packages
-</li>
-<li><strong>workspace</strong> - the workspace is the subtree starting from the root. It can contain any number of projects that will be built simultaneously by dune.
-</li>
-</ul>
-<p>From the documentation:</p>
-<blockquote>
-<p><code>dune init</code> can be used to quickly add new projects, libraries, tests, or executables without having to manually create dune files, or it can be composed to programmatically generate parts of a multi-component project.</p>
-</blockquote>
-<hr />
-<p>All in all I think the terminoloygy and documentation is a little confusing for the following reasons:</p>
+<h3>Opam and Dune</h3>
+<p>For a new library there are two key components you will need:</p>
 <ol>
-<li>
-<p>The terms are all quite overloaded and finding the terminology page on the <em>readthedocs</em> page is not easy... for instance &quot;I want to build a new OCaml project&quot; <code>===</code> &quot;I want to build <em>a source tree containing one or more packages which can be built and installed as one by opam&quot;</em>?</p>
-<p><a href="https://dune.readthedocs.io/en/stable/">Welcome to dune's documentation! - dune documentation</a></p>
+<li>Dune files to build the project with dune.
 </li>
-<li>
-<p>From the definition of <strong>package and then reference in project</strong> it feels like there is a very tight coulpling between opam and dune. Whilst there is a good integration I believe the two are flexible enought to use separately, and powerful when combined.</p>
+<li>An opam file to unlock the power of the OCaml platform.
 </li>
 </ol>
+<p>For now, there is no one tool that will accomplish this in one go so multiple tools will be used.</p>
+<p>Dune has a <code>dune init</code> command that is very simple and will initialise a bare bones project, executable or library. For a library we can execute <code>dune init library &lt;library-main-file&gt;</code>. This should generate a &quot;Hello World&quot; file and a simple dune file with a <em>library stanza</em>.</p>
+<p>The next step is to generate your opam file. There are three ways you can do this:</p>
+<ol>
+<li>Using opam pin - to edit an opam file  you can use <code>opam pin add . --edit</code> this will open an editor with a prefilled library in it. The slightly confusing aspect to this is that you are also simultaneously pinning the package which you might not want to do.
+</li>
+<li>Copying an existing opam file and editing it - from the command line <code>opam show &lt;an-installed-packages&gt; --raw</code> will print to stdout the opam file for whatever package you added. You can the redirect this to a file and edit it accordingly.
+</li>
+<li>By hand - the simplest, but perhaps longest, is to write it by hand.
+</li>
+</ol>
+<p>Regardless of what method you choose, the <code>opam lint</code> command is useful to ensure the opam file has correct syntax.</p>
+<h3>Generate an Opam file from Dune</h3>
+<p>Using the <code>dune-project</code> file to <a href="https://dune.readthedocs.io/en/stable/opam.html#generating-opam-files">generate your opam file</a> is a useful way to ensure your dune dependency is correctly versioned. In this approach you can express your opam file in the dune language and this will automatically generate an opam file for you.</p>
+<p>Note that sometimes you need an escape-hatch as the specification in <code>dune-project</code> for opam files is not as flexible as an opam file - for this you should use the <a href="https://dune.readthedocs.io/en/stable/opam.html#opam-template">templates</a> as an escape-hatch.</p>
+<h2>Real World Examples</h2>
+<hr />
+<p>Many of the community libraries use dune and opam to build their projects - <a href="https://github.com/mirage/ocaml-cstruct">cstruct</a> and <a href="https://github.com/mirage/alcotest">alcotest</a> for example.</p>
+<p>Dune itself use the <a href="https://github.com/ocaml/dune/blob/master/dune-project">dune-project</a> approach of generating opam files.</p>
 
     
             

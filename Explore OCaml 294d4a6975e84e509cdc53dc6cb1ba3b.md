@@ -116,6 +116,6 @@ The OCaml Platform is an idealised, one-stop-shop for all things OCaml. But it t
 
 I'm using this ***thoughts*** page for content that may eventually make its way to an FAQ of sorts. The idea is if you're confused whilst writing a workflow then you can document it in this page. Further reading contains additional resources that some workflows might reference for the sake of staying concise. 
 
-[Brain-dump of Personal Challenges & Misconceptions ](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Brain%20dump%20of%20Personal%20Challenges%20Misconceptions%204d9678ea024c4513b2020d14f62e3437.md)
+[Brain-dump of Personal Challenges & Misconceptions ](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Brain-dump%20of%20Personal%20Challenges%20&%20Misconceptions%204d9678ea024c4513b2020d14f62e3437.md)
 
 [Thoughts whilst writing Workflows ](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Thoughts%20whilst%20writing%20Workflows%208ade52f908514919a9397891b7233a67.md)

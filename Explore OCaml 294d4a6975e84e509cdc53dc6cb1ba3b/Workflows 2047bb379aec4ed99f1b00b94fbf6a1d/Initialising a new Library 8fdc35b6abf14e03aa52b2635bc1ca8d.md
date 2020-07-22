@@ -17,28 +17,35 @@ This is important because it is very easy to make mistakes in setting up a repos
 
 ---
 
-Dune is the best tool for doing something like this (although AFAIK there's no out-of-the-box support for initialising this with opam integration). 
+### Opam and Dune
 
-Dune Terminology: 
+For a new library there are two key components you will need: 
 
-[Overview - dune documentation](https://dune.readthedocs.io/en/stable/overview.html?highlight=%22installed%20world%22#terminology)
+1. Dune files to build the project with dune. 
+2. An opam file to unlock the power of the OCaml platform. 
 
-The key ones include:
+For now, there is no one tool that will accomplish this in one go so multiple tools will be used. 
 
-- **package** - a package is a set of libraries, executables, … that are built and installed as one by opam.
-- **project** - a project is a source tree, maybe containing one or more packages
-- **workspace** - the workspace is the subtree starting from the root. It can contain any number of projects that will be built simultaneously by dune.
+Dune has a `dune init` command that is very simple and will initialise a bare bones project, executable or library. For a library we can execute `dune init library <library-main-file>`. This should generate a "Hello World" file and a simple dune file with a *library stanza*. 
 
-From the documentation: 
+The next step is to generate your opam file. There are three ways you can do this: 
 
-> `dune init` can be used to quickly add new projects, libraries, tests, or executables without having to manually create dune files, or it can be composed to programmatically generate parts of a multi-component project.
+1. Using opam pin - to edit an opam file  you can use `opam pin add . --edit` this will open an editor with a prefilled library in it. The slightly confusing aspect to this is that you are also simultaneously pinning the package which you might not want to do. 
+2. Copying an existing opam file and editing it - from the command line `opam show <an-installed-packages> --raw` will print to stdout the opam file for whatever package you added. You can the redirect this to a file and edit it accordingly. 
+3. By hand - the simplest, but perhaps longest, is to write it by hand. 
+
+Regardless of what method you choose, the `opam lint` command is useful to ensure the opam file has correct syntax. 
+
+### Generate an Opam file from Dune
+
+Using the `dune-project` file to [generate your opam file](https://dune.readthedocs.io/en/stable/opam.html#generating-opam-files) is a useful way to ensure your dune dependency is correctly versioned. In this approach you can express your opam file in the dune language and this will automatically generate an opam file for you. 
+
+Note that sometimes you need an escape-hatch as the specification in `dune-project` for opam files is not as flexible as an opam file - for this you should use the [templates](https://dune.readthedocs.io/en/stable/opam.html#opam-template) as an escape-hatch. 
+
+## Real World Examples
 
 ---
 
-All in all I think the terminoloygy and documentation is a little confusing for the following reasons: 
+Many of the community libraries use dune and opam to build their projects - [cstruct](https://github.com/mirage/ocaml-cstruct) and [alcotest](https://github.com/mirage/alcotest) for example. 
 
-1. The terms are all quite overloaded and finding the terminology page on the *readthedocs* page is not easy... for instance "I want to build a new OCaml project" `===` "I want to build *a source tree containing one or more packages which can be built and installed as one by opam"*? 
-
-    [Welcome to dune's documentation! - dune documentation](https://dune.readthedocs.io/en/stable/)
-
-2. From the definition of **package and then reference in project** it feels like there is a very tight coulpling between opam and dune. Whilst there is a good integration I believe the two are flexible enought to use separately, and powerful when combined.
+Dune itself use the [dune-project](https://github.com/ocaml/dune/blob/master/dune-project) approach of generating opam files.
