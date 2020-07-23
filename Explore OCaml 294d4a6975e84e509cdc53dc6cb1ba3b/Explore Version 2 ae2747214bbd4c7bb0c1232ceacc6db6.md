@@ -22,8 +22,8 @@ What is ***good*** about the current method:
 ### Principles
 
 1. It should be easy to add new content for almost anybody that says "I have an idea for a workflow you could add" or "could we add community library `X` to do `Y`" - this makes it accessible and less likely to quickly become outdated. 
-2. It should be easy to validate content - à la `mdx`.
-3. It shouldn't be reliant on "unready" tools (like the Notion API) - this is too brittle and will cause more headaches than it is worth. 
+2. It should be automated to validate content - à la `mdx`.
+3. It should be self-hosted.
 
 ### Idea
 
