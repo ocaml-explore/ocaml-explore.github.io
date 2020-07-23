@@ -77,7 +77,12 @@
 <ol>
 <li><code>dune build</code> - this builds the <code>explore</code> site builder tool but also performs the tests for mdx content in the markdown files to make sure everything is as expected.
 </li>
-<li></li>
+<li><code>explore build</code> - once the markdown is all correct and the mdx has been promoted then the build tool parses all the files and generates the <code>html</code> pages
+</li>
+<li><code>copy ./static</code> - move the static content over including <code>admin</code> folder for Netlify CMS
+</li>
+<li><code>netlify deploy</code>  - watching for pushes to <code>site</code> branch 🎉
+</li>
 </ol>
 </li>
 </ul>

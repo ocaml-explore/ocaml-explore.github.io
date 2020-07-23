@@ -40,7 +40,9 @@ What is ***good*** about the current method:
 - In terms of porting the existing content - whilst it'll be a little tedious, it really only boils down to creating new markdown files for each of the workflows, users, tools and libraries, then adding metadata and changing internal links in the content to point to the new files where appropriate. After this the portal would handle new workflows etc.
 - Build Process:
     1. `dune build` - this builds the `explore` site builder tool but also performs the tests for mdx content in the markdown files to make sure everything is as expected. 
-    2. 
+    2. `explore build` - once the markdown is all correct and the mdx has been promoted then the build tool parses all the files and generates the `html` pages 
+    3. `copy ./static` - move the static content over including `admin` folder for Netlify CMS 
+    4. `netlify deploy`  - watching for pushes to `site` branch 🎉
 
  
 
