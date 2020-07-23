@@ -73,6 +73,13 @@
 </li>
 <li>In terms of porting the existing content - whilst it'll be a little tedious, it really only boils down to creating new markdown files for each of the workflows, users, tools and libraries, then adding metadata and changing internal links in the content to point to the new files where appropriate. After this the portal would handle new workflows etc.
 </li>
+<li>Build Process:
+<ol>
+<li><code>dune build</code> - this builds the <code>explore</code> site builder tool but also performs the tests for mdx content in the markdown files to make sure everything is as expected.
+</li>
+<li></li>
+</ol>
+</li>
 </ul>
 <h3>Similarities to RWO</h3>
 <p>It feels very like RWO at the moment, the major difference being if we decide to host on Netlify then we get the added authentication with the portal.</p>

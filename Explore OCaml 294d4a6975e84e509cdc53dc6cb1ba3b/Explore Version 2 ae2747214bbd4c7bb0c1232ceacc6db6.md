@@ -38,6 +38,9 @@ What is ***good*** about the current method:
 
 - The way I see it there are two main options with this approach - one, we could use a modern static site generator like GatsbyJS which I have quite bit of experience with, but this comes with the problem of still needing an OCaml build process for the Mdx part. This could be mitigated in option two, and do it all purely in OCaml.
 - In terms of porting the existing content - whilst it'll be a little tedious, it really only boils down to creating new markdown files for each of the workflows, users, tools and libraries, then adding metadata and changing internal links in the content to point to the new files where appropriate. After this the portal would handle new workflows etc.
+- Build Process:
+    1. `dune build` - this builds the `explore` site builder tool but also performs the tests for mdx content in the markdown files to make sure everything is as expected. 
+    2. 
 
  
 
