@@ -119,3 +119,5 @@ I'm using this ***thoughts*** page for content that may eventually make its way 
 [Brain-dump of Personal Challenges & Misconceptions ](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Brain-dump%20of%20Personal%20Challenges%20&%20Misconceptions%204d9678ea024c4513b2020d14f62e3437.md)
 
 [Thoughts whilst writing Workflows ](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Thoughts%20whilst%20writing%20Workflows%208ade52f908514919a9397891b7233a67.md)
+
+[Explore Version 2](Explore%20OCaml%20294d4a6975e84e509cdc53dc6cb1ba3b/Explore%20Version%202%20ae2747214bbd4c7bb0c1232ceacc6db6.md)

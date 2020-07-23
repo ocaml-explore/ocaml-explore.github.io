@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><title>Explore Version 2</title>
+  <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Ubuntu:ital,wght@0,400;0,700;1,400&amp;display=swap"
+   />
+  <link rel="stylesheet" href="../main.css"/>
+  <link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/gruvbox-dark.min.css"
+   />
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"
+   >
+  </script>
+  <script charset="UTF-8"
+   src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/ocaml.min.js"
+   >
+  </script><script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+             
+  <div style="display: flex; justify-content: center; align-content: center">
+   
+           
+   <div style="max-width: 800px">
+                                           
+    <h1>Explore Version 2</h1>
+<h2>Brief Analysis of Current Method</h2>
+<hr />
+<p>What is <em><strong>wrong</strong></em> with the current method:</p>
+<ol>
+<li>Reliance on Notion - relies on reverse-engineering the Notion API, this could change at the drop of a hat or how they export things.
+</li>
+<li>Data representation and losing information - the export function is not lossless, the filtering and sorting of tables is gone.
+</li>
+<li>Inflexible - if we wanted to add <code>mdx</code> support, we can't do this that easily at all.
+</li>
+</ol>
+<p>What is <em><strong>good</strong></em> about the current method:</p>
+<ol>
+<li>Ease of adding content - Notion is great for adding content, it makes it easy to get people up and running with creating workflows, this is something that should be kept.
+</li>
+<li>Living document - their is a friction with documentation that the harder it is to add new things or update content, the more quickly it will all become outdated. Notion lets the content live with the build tool taking &quot;snapshots&quot; for displaying.
+</li>
+</ol>
+<h2>Proposal for New Infrastructure</h2>
+<hr />
+<h3>Principles</h3>
+<ol>
+<li>It should be easy to add new content for almost anybody that says &quot;I have an idea for a workflow you could add&quot; or &quot;could we add community library <code>X</code> to do <code>Y</code>&quot; - this makes it accessible and less likely to quickly become outdated.
+</li>
+<li>It should be easy to validate content - à la <code>mdx</code>.
+</li>
+<li>It shouldn't be reliant on &quot;unready&quot; tools (like the Notion API) - this is too brittle and will cause more headaches than it is worth.
+</li>
+</ol>
+<h3>Idea</h3>
+<ul>
+<li>
+<p>Content - Markdown pages with YAML front-matter to record metadata and relations (User <code>X</code> related to Workflow <code>Y</code>)</p>
+</li>
+<li>
+<p>CMS - to get the &quot;ease of adding content&quot; we could use NetlifyCMS. This gives us control over the metadata. This is a simple portal for exposing a Github repository to users to edit markdown. I've added my own personal one below. Saving the work adds a new branch to the repo (multiple saves are commits to this branch), based on the user role they can then change the status to &quot;read for review&quot; (a.k.a PR) and then admin can review and merge (publish). Handling the authentication can be done with Netlify (or Github OAuth, thought this requires a server).</p>
+<p><img src="Explore%20Version%202%20ae2747214bbd4c7bb0c1232ceacc6db6/netlifycms.png" alt="Explore%20Version%202%20ae2747214bbd4c7bb0c1232ceacc6db6/netlifycms.png" /></p>
+</li>
+<li>
+<p>Mdx - I think it would be great to incorporate Mdx like in RWO. Documentation doesn't only struggle from being outdated, it struggles from being wrong! Mdx can help mitigate this. For user wishing to add a workflow using mdx they would have to go through the traditional &quot;clone repo, add work, make PR&quot; approach.</p>
+</li>
+</ul>
+<h3>Build &amp; Porting</h3>
+<ul>
+<li>The way I see it there are two main options with this approach - one, we could use a modern static site generator like GatsbyJS which I have quite bit of experience with, but this comes with the problem of still needing an OCaml build process for the Mdx part. This could be mitigated in option two, and do it all purely in OCaml.
+</li>
+<li>In terms of porting the existing content - whilst it'll be a little tedious, it really only boils down to creating new markdown files for each of the workflows, users, tools and libraries, then adding metadata and changing internal links in the content to point to the new files where appropriate. After this the portal would handle new workflows etc.
+</li>
+</ul>
+<h3>Similarities to RWO</h3>
+<p>It feels very like RWO at the moment, the major difference being if we decide to host on Netlify then we get the added authentication with the portal.</p>
+
+    
+            
+   </div>
+               
+  </div>
+            
+          
+        </body>
+</html>
